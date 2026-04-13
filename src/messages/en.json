@@ -1,0 +1,104 @@
+{
+  "common": {
+    "back": "Back",
+    "close": "Close",
+    "cancel": "Cancel"
+  },
+  "nav": {
+    "dashboard": "Home",
+    "review": "Review",
+    "library": "Library",
+    "settings": "Settings",
+    "data": "My data",
+    "apiKeys": "API keys"
+  },
+  "auth": {
+    "signup": "Sign up",
+    "login": "Log in",
+    "email": "Email",
+    "password": "Password",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log in",
+    "logout": "Log out"
+  },
+  "wizard": {
+    "title": "Welcome to learnEnglish",
+    "next": "Next",
+    "finish": "Finish",
+    "languages": "Languages",
+    "nativeLanguage": "Native language",
+    "targetLanguage": "Target language",
+    "dailyGoal": "Daily goal (new cards)",
+    "apiKeys": "API keys (BYOK)",
+    "placement": "Placement test",
+    "atLeastOneKey": "Add at least one API key",
+    "welcome": "Welcome"
+  },
+  "dashboard": {
+    "greeting": "Hello",
+    "streak": "Streak",
+    "xp": "XP",
+    "due": "Due cards",
+    "days": "days"
+  },
+  "review": {
+    "showAnswer": "Show answer",
+    "good": "Good",
+    "hard": "Hard",
+    "easy": "Easy",
+    "again": "Again",
+    "dailyGoalReached": "Daily goal reached — nothing more to review now.",
+    "play": "Play audio",
+    "typingPlaceholder": "Type the answer",
+    "typingCorrect": "Correct!",
+    "typingWrong": "Try again",
+    "loading": "Loading…"
+  },
+  "reading": {
+    "addFlashcard": "Add flashcard",
+    "endSession": "End session",
+    "reviewWords": "Review learned words",
+    "play": "Play audio",
+    "sessionEnded": "Session ended.",
+    "wordsLearned": "words learned.",
+    "sentence": "Sentence",
+    "translation": "Translation",
+    "grammar": "Grammar",
+    "advance": "I know it a bit",
+    "allFailed": "No AI provider responded. Check your connection or keys.",
+    "invalidKey": "Your Claude key appears invalid. Update it in Settings."
+  },
+  "flashcards": {
+    "title": "Flashcards",
+    "new": "New card",
+    "search": "Search…",
+    "empty": "No cards yet."
+  },
+  "library": {
+    "title": "Library",
+    "importEpub": "Import EPUB",
+    "importing": "Importing…",
+    "createText": "Create text",
+    "titlePlaceholder": "Title",
+    "textPlaceholder": "Text in English…",
+    "create": "Create",
+    "empty": "No books yet."
+  },
+  "settings": {
+    "title": "Settings",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "confirmDelete": "Confirm delete?",
+    "updated": "Key updated",
+    "saved": "Key saved",
+    "export": "Export my data",
+    "exportDescription": "Download everything associated with your account as a single JSON file. API keys are not included.",
+    "keysPlaceholder": "Paste your key",
+    "keysReplacePlaceholder": "Paste new key to update",
+    "meta": "Goal",
+    "dataTitle": "My data",
+    "apiKeysTitle": "API keys"
+  }
+}

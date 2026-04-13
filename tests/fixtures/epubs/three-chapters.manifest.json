@@ -1,0 +1,10 @@
+{
+  "title": "Three Chapters Sample",
+  "author": "Test Author",
+  "language": "en",
+  "chapters": [
+    { "index": 0, "title": "Chapter 1 - Beginnings", "wordCount": 1200 },
+    { "index": 1, "title": "Chapter 2 - Middle", "wordCount": 1500 },
+    { "index": 2, "title": "Chapter 3 - End", "wordCount": 900 }
+  ]
+}

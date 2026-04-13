@@ -1,0 +1,279 @@
+// learnEnglish — Prisma schema (MVP)
+// Source of truth for DB structure. Mirrors the data model in PROJECT_PROMPT.md §4
+// and the table names expected by tests/helpers/db.ts.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Locale {
+  pt_BR
+  en
+}
+
+enum CefrLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+
+enum LlmProvider {
+  claude
+  gemini
+  openai
+  openrouter
+}
+
+enum CardDirection {
+  EN_TO_PT
+  PT_TO_EN
+  BOTH
+}
+
+enum CardState {
+  New
+  Learning
+  Review
+  Relearning
+}
+
+enum ReviewRating {
+  Again
+  Hard
+  Good
+  Easy
+}
+
+enum BookSource {
+  EPUB
+  TXT
+  MD
+  AI
+}
+
+enum FamiliarityLevel {
+  Unknown
+  New
+  Learning
+  Known
+  Ignored
+}
+
+model User {
+  id                    String     @id @default(cuid())
+  email                 String     @unique
+  name                  String?
+  image                 String?
+  googleId              String?    @unique
+  passwordHash          String?
+  nativeLanguage        Locale     @default(pt_BR)
+  targetLanguage        Locale     @default(en)
+  uiLocale              Locale     @default(pt_BR)
+  cefrLevel             CefrLevel?
+  dailyNewCardLimit     Int        @default(20)
+  dailyStudyMinutesGoal Int        @default(15)
+  onboardingCompleted   Boolean    @default(false)
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+
+  accounts        Account[]
+  sessions        Session[]
+  apiKeys         ApiKey[]
+  flashcards      Flashcard[]
+  reviewLogs      ReviewLog[]
+  books           Book[]
+  readingSessions ReadingSession[]
+  readingWords    ReadingWord[]
+  placementTests  PlacementTest[]
+  gamification    GamificationState?
+  aiTexts         AiGeneratedText[]
+}
+
+// Auth.js v5 models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ApiKey {
+  id           String      @id @default(cuid())
+  userId       String
+  provider     LlmProvider
+  encryptedKey String      @db.Text
+  priority     Int         @default(0)
+  enabled      Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider])
+  @@index([userId, priority])
+}
+
+model Flashcard {
+  id         String         @id @default(cuid())
+  userId     String
+  front      String         @db.Text
+  back       String         @db.Text
+  cloze      String?        @db.Text
+  audioUrl   String?
+  direction  CardDirection  @default(EN_TO_PT)
+  tags       String[]       @default([])
+  // FSRS state (flattened for indexing; _fsrs JSON kept for round-trip)
+  state      CardState      @default(New)
+  reps       Int            @default(0)
+  lapses     Int            @default(0)
+  stability  Float          @default(0)
+  difficulty Float          @default(0)
+  dueAt      DateTime       @default(now())
+  fsrsState  Json?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  user    User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviews ReviewLog[]
+
+  @@index([userId, dueAt])
+  @@index([userId, tags])
+}
+
+model ReviewLog {
+  id          String       @id @default(cuid())
+  flashcardId String
+  userId      String
+  rating      ReviewRating
+  scheduledAt DateTime
+  reviewedAt  DateTime     @default(now())
+  elapsedMs   Int          @default(0)
+
+  flashcard Flashcard @relation(fields: [flashcardId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, reviewedAt])
+}
+
+model Book {
+  id           String     @id @default(cuid())
+  userId       String
+  title        String
+  author       String?
+  language     String     @default("en")
+  sourceFormat BookSource
+  filePath     String?
+  createdAt    DateTime   @default(now())
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapters Chapter[]
+
+  @@index([userId])
+}
+
+model Chapter {
+  id            String     @id @default(cuid())
+  bookId        String
+  index         Int
+  title         String
+  content       String     @db.Text
+  wordCount     Int        @default(0)
+  estimatedCefr CefrLevel?
+
+  book             Book             @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  readingSessions  ReadingSession[]
+
+  @@unique([bookId, index])
+}
+
+model AiGeneratedText {
+  id        String     @id @default(cuid())
+  userId    String
+  theme     String
+  cefrLevel CefrLevel
+  content   String     @db.Text
+  createdAt DateTime   @default(now())
+
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  readingSessions ReadingSession[]
+}
+
+model ReadingSession {
+  id           String   @id @default(cuid())
+  userId       String
+  chapterId    String?
+  aiTextId     String?
+  startedAt    DateTime @default(now())
+  endedAt      DateTime?
+  wordsLearned String[] @default([])
+
+  user    User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter Chapter?         @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  aiText  AiGeneratedText? @relation(fields: [aiTextId], references: [id], onDelete: SetNull)
+
+  @@index([userId, startedAt])
+}
+
+model ReadingWord {
+  id        String           @id @default(cuid())
+  userId    String
+  word      String           // lemmatized, lowercased
+  level     FamiliarityLevel @default(Unknown)
+  updatedAt DateTime         @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, word])
+  @@index([userId, level])
+}
+
+model PlacementTest {
+  id            String     @id @default(cuid())
+  userId        String
+  startedAt     DateTime   @default(now())
+  finishedAt    DateTime?
+  estimatedCefr CefrLevel?
+  answers       Json
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model GamificationState {
+  userId         String   @id
+  xp             Int      @default(0)
+  level          Int      @default(1)
+  currentStreak  Int      @default(0)
+  longestStreak  Int      @default(0)
+  lastActiveDate DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

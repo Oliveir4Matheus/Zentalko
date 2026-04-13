@@ -1,0 +1,14 @@
+{
+  "id": "gen_test_openrouter",
+  "model": "anthropic/claude-sonnet-4",
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "{\"translation\":\"efêmero\",\"example\":\"An ephemeral moment.\"}"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": { "prompt_tokens": 10, "completion_tokens": 12 }
+}

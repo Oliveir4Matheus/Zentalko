@@ -1,0 +1,16 @@
+{
+  "id": "chatcmpl_test_openai",
+  "object": "chat.completion",
+  "model": "gpt-4o",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"translation\":\"efêmero\",\"example\":\"An ephemeral moment.\"}"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": { "prompt_tokens": 10, "completion_tokens": 12, "total_tokens": 22 }
+}

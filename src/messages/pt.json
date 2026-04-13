@@ -1,0 +1,104 @@
+{
+  "common": {
+    "back": "Voltar",
+    "close": "Fechar",
+    "cancel": "Cancelar"
+  },
+  "nav": {
+    "dashboard": "Início",
+    "review": "Revisar",
+    "library": "Biblioteca",
+    "settings": "Configurações",
+    "data": "Meus dados",
+    "apiKeys": "Chaves de API"
+  },
+  "auth": {
+    "signup": "Criar conta",
+    "login": "Entrar",
+    "email": "Email",
+    "password": "Senha",
+    "haveAccount": "Já tem conta?",
+    "loginLink": "Entrar",
+    "logout": "Sair"
+  },
+  "wizard": {
+    "title": "Bem-vindo ao learnEnglish",
+    "next": "Próximo",
+    "finish": "Finalizar",
+    "languages": "Idiomas",
+    "nativeLanguage": "Idioma nativo",
+    "targetLanguage": "Idioma alvo",
+    "dailyGoal": "Meta diária (cartões novos)",
+    "apiKeys": "Chaves de API (BYOK)",
+    "placement": "Teste de nivelamento",
+    "atLeastOneKey": "Adicione pelo menos uma chave de API",
+    "welcome": "Bem-vindo"
+  },
+  "dashboard": {
+    "greeting": "Olá",
+    "streak": "Streak",
+    "xp": "XP",
+    "due": "Cartões devidos",
+    "days": "dias"
+  },
+  "review": {
+    "showAnswer": "Mostrar resposta",
+    "good": "Bom",
+    "hard": "Difícil",
+    "easy": "Fácil",
+    "again": "De novo",
+    "dailyGoalReached": "Meta diária alcançada — nada mais para revisar agora.",
+    "play": "Ouvir",
+    "typingPlaceholder": "Digite a resposta",
+    "typingCorrect": "Correto!",
+    "typingWrong": "Tente de novo",
+    "loading": "Carregando…"
+  },
+  "reading": {
+    "addFlashcard": "Adicionar flashcard",
+    "endSession": "Finalizar sessão",
+    "reviewWords": "Revisar palavras aprendidas",
+    "play": "Ouvir",
+    "sessionEnded": "Sessão finalizada.",
+    "wordsLearned": "palavras aprendidas.",
+    "sentence": "Frase",
+    "translation": "Tradução",
+    "grammar": "Gramática",
+    "advance": "Sei um pouco",
+    "allFailed": "Nenhum provedor de IA respondeu. Verifique sua conexão ou suas chaves.",
+    "invalidKey": "Sua chave da Claude parece inválida. Atualize em Configurações."
+  },
+  "flashcards": {
+    "title": "Flashcards",
+    "new": "Novo cartão",
+    "search": "Buscar…",
+    "empty": "Nenhum cartão ainda."
+  },
+  "library": {
+    "title": "Biblioteca",
+    "importEpub": "Importar EPUB",
+    "importing": "Importando…",
+    "createText": "Criar texto",
+    "titlePlaceholder": "Título",
+    "textPlaceholder": "Texto em inglês…",
+    "create": "Criar",
+    "empty": "Nenhum livro ainda."
+  },
+  "settings": {
+    "title": "Configurações",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Remover",
+    "confirm": "Confirmar",
+    "confirmDelete": "Confirmar remoção?",
+    "updated": "Chave atualizada",
+    "saved": "Chave salva",
+    "export": "Exportar meus dados",
+    "exportDescription": "Baixe tudo que está associado à sua conta em um único arquivo JSON. Chaves de API não são incluídas.",
+    "keysPlaceholder": "Cole sua chave",
+    "keysReplacePlaceholder": "Cole nova chave para atualizar",
+    "meta": "Meta",
+    "dataTitle": "Meus dados",
+    "apiKeysTitle": "Chaves de API"
+  }
+}

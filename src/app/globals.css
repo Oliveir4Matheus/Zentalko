@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --surface-muted: #f2efe8;
+  --fg: #1a1a1a;
+  --fg-muted: #6b6358;
+  --border: #e7e2d7;
+  --accent: #8b5e34;
+  --accent-fg: #ffffff;
+  --ring: #c89b6b;
+  --success: #3f7d52;
+  --warning: #c2410c;
+  --gold: #a16207;
+  --danger: #b91c1c;
+}
+
+html.dark {
+  color-scheme: dark;
+  --bg: #171412;
+  --surface: #201c19;
+  --surface-muted: #2a2521;
+  --fg: #f4f0e8;
+  --fg-muted: #a39889;
+  --border: #3a332d;
+  --accent: #c89b6b;
+  --accent-fg: #1a1a1a;
+  --ring: #c89b6b;
+  --gold: #d4a548;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.serif {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+[data-familiarity="Unknown"] { @apply bg-familiarity-unknown; }
+[data-familiarity="New"]     { @apply bg-familiarity-new; }
+[data-familiarity="Learning"]{ @apply bg-familiarity-learning; }
+[data-familiarity="Known"]   { @apply bg-familiarity-known; }
+[data-familiarity="Ignored"] { @apply bg-transparent; }
+
+/* ─── Immersive reader ───────────────────────────────────── */
+
+:root {
+  --paper: #f7efdf;
+  --paper-soft: #fbf5e6;
+  --paper-border: #e6dcc6;
+  --ink: #2a2218;
+  --ink-muted: #6b5f4a;
+  --ink-accent: #8b5e34;
+}
+
+html.dark {
+  --paper: #1f1b16;
+  --paper-soft: #262018;
+  --paper-border: #3a3226;
+  --ink: #efe6d3;
+  --ink-muted: #a99a7d;
+  --ink-accent: #c89b6b;
+}
+
+body.reader-immersive aside[data-testid='sidebar'],
+body.reader-immersive .app-topbar {
+  display: none !important;
+}
+
+.book-title {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+}
+
+.book-prose {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  color: var(--ink);
+  font-size: 1.125rem;
+  line-height: 1.85;
+  hyphens: auto;
+}
+.book-prose p {
+  margin: 0;
+  text-align: justify;
+  text-indent: 1.75em;
+}
+.book-prose p + p {
+  margin-top: 0;
+}
+.book-prose p:first-of-type {
+  text-indent: 0;
+}
+.book-prose p:first-of-type::first-letter {
+  font-weight: 600;
+  font-size: 3.25em;
+  line-height: 0.9;
+  float: left;
+  padding: 0.1em 0.12em 0 0;
+  color: var(--ink-accent);
+}
+
+.book-word {
+  cursor: pointer;
+  padding: 0 1px;
+  border-radius: 2px;
+  transition: background-color 120ms ease;
+}
+.book-word:hover {
+  background: rgba(139, 94, 52, 0.08);
+}
+
+/* Override the block-fill familiarity colors inside the book prose,
+   using subtle underlines instead so text keeps reading like a printed page. */
+.book-prose [data-familiarity='Unknown'] { background-color: transparent !important; }
+.book-prose [data-familiarity='New']      { background-color: rgba(139, 94, 52, 0.32) !important; }
+.book-prose [data-familiarity='Learning'] { background-color: rgba(139, 94, 52, 0.18) !important; }
+.book-prose [data-familiarity='Known']    { background-color: rgba(139, 94, 52, 0.07) !important; }
+.book-prose [data-familiarity='Ignored']  { background-color: transparent !important; }
+
+html.dark .book-prose [data-familiarity='New']      { background-color: rgba(200, 155, 107, 0.34) !important; }
+html.dark .book-prose [data-familiarity='Learning'] { background-color: rgba(200, 155, 107, 0.2) !important; }
+html.dark .book-prose [data-familiarity='Known']    { background-color: rgba(200, 155, 107, 0.1) !important; }
+
+.book-prose [data-karaoke-active='true'] {
+  background: rgba(200, 155, 107, 0.3);
+  border-radius: 3px;
+}
+
+[data-karaoke-active="true"] {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}

@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   typedRoutes: true,
   poweredByHeader: false,
   output: 'standalone',
+  experimental: {
+    serverActions: {
+      // EPUB uploads go through a Server Action. Default is 1 MB; our
+      // action-level validation caps at 50 MB, so align the two.
+      bodySizeLimit: '50mb',
+    },
+  },
   async headers() {
     const isProd = process.env.NODE_ENV === 'production';
     // Next.js needs 'unsafe-inline' for its runtime style + script bootstraps.

@@ -38,7 +38,11 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-learnenglish}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-learnenglish}
       POSTGRES_DB: ${POSTGRES_DB:-learnenglish}
-    # No public port mapping — only the internal docker network reaches it.
+    # Bind to loopback only — dev can reach via localhost:5433 without
+    # exposing the DB to the network. In Coolify prod, containers talk
+    # over the internal docker network regardless.
+    ports:
+      - "127.0.0.1:5433:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
     healthcheck:

@@ -157,8 +157,12 @@ export const readingRouter = router({
           console.warn('translateWord LLM failed', err, 'inner:', errors);
         }
       }
-      // No LLM available or all providers failed — signal fallback so the client can
-      // show a proper "translation unavailable" message instead of echoing the word.
+      // LLM unavailable / all providers failed → try MyMemory (free, keyless).
+      const { translateViaMyMemory } = await import('@/server/translate/mymemory');
+      const mm = await translateViaMyMemory(input.word);
+      if (mm) {
+        return { translation: mm.translation, example: '', fallback: false };
+      }
       return { translation: input.word, example: input.context, fallback: true };
     }),
 
@@ -192,6 +196,16 @@ export const readingRouter = router({
         } catch (err) {
           console.warn('explainSentence LLM failed', err);
         }
+      }
+      // LLM unavailable → use MyMemory for translation (grammar analysis still
+      // requires an LLM, so we return a hint).
+      const { translateViaMyMemory } = await import('@/server/translate/mymemory');
+      const mm = await translateViaMyMemory(input.sentence);
+      if (mm) {
+        return {
+          translation: mm.translation,
+          grammar: 'Adicione uma chave de LLM em Configurações para explicações gramaticais.',
+        };
       }
       return { translation: input.sentence, grammar: 'N/A' };
     }),

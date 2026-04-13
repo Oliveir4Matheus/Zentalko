@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   typedRoutes: true,
   poweredByHeader: false,
+  output: 'standalone',
   async headers() {
     const isProd = process.env.NODE_ENV === 'production';
     // Next.js needs 'unsafe-inline' for its runtime style + script bootstraps.

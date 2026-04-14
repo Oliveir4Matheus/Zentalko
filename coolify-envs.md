@@ -1,0 +1,1870 @@
+- generic [active] [ref=e1]:
+  - button "1 deployment" [ref=e4]:
+    - img [ref=e5]
+    - generic [ref=e7]: 1 deployment
+    - img [ref=e8]
+  - generic [ref=e10]:
+    - navigation [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - link "Coolify" [ref=e16] [cursor=pointer]:
+            - /url: /
+          - link "v4.0.0-beta.471" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471
+        - button / [ref=e19]:
+          - img [ref=e20]
+          - generic [ref=e22]: /
+        - button "Preferences 9+" [ref=e25] [cursor=pointer]:
+          - img "Preferences" [ref=e26]
+          - generic [ref=e28]: 9+
+      - combobox [ref=e31]:
+        - option "Switch team" [disabled]
+        - option "Root Team" [selected]
+      - list [ref=e32]:
+        - listitem [ref=e33]:
+          - list [ref=e34]:
+            - listitem [ref=e35]:
+              - link "Dashboard" [ref=e36] [cursor=pointer]:
+                - /url: /
+                - img [ref=e37]
+                - generic [ref=e39]: Dashboard
+            - listitem [ref=e40]:
+              - link "Projects" [ref=e41] [cursor=pointer]:
+                - /url: /projects
+                - img [ref=e42]
+                - generic [ref=e47]: Projects
+            - listitem [ref=e48]:
+              - link "Servers" [ref=e49] [cursor=pointer]:
+                - /url: /servers
+                - img [ref=e50]
+                - generic [ref=e55]: Servers
+            - listitem [ref=e56]:
+              - link "Sources" [ref=e57] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/sources
+                - img [ref=e58]
+                - generic [ref=e60]: Sources
+            - listitem [ref=e61]:
+              - link "Destinations" [ref=e62] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/destinations
+                - img [ref=e63]
+                - generic [ref=e65]: Destinations
+            - listitem [ref=e66]:
+              - link "S3 Storages" [ref=e67] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/storages
+                - img [ref=e68]
+                - generic [ref=e73]: S3 Storages
+            - listitem [ref=e74]:
+              - link "Shared Variables" [ref=e75] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/shared-variables
+                - img [ref=e76]
+                - generic [ref=e80]: Shared Variables
+            - listitem [ref=e81]:
+              - link "Notifications" [ref=e82] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/notifications/email
+                - img [ref=e83]
+                - generic [ref=e85]: Notifications
+            - listitem [ref=e86]:
+              - link "Keys & Tokens" [ref=e87] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/security/private-key
+                - img [ref=e88]
+                - generic [ref=e90]: Keys & Tokens
+            - listitem [ref=e91]:
+              - link "Tags" [ref=e92] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/tags
+                - img [ref=e93]
+                - generic [ref=e97]: Tags
+            - listitem [ref=e98]:
+              - link "Terminal" [ref=e99] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/terminal
+                - img [ref=e100]
+                - generic [ref=e103]: Terminal
+            - listitem [ref=e104]:
+              - link "Profile" [ref=e105] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/profile
+                - img [ref=e106]
+                - generic [ref=e111]: Profile
+            - listitem [ref=e112]:
+              - link "Teams" [ref=e113] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/team
+                - img [ref=e114]
+                - generic [ref=e122]: Teams
+            - listitem [ref=e123]:
+              - link "Settings" [ref=e124] [cursor=pointer]:
+                - /url: /settings
+                - img [ref=e125]
+                - generic [ref=e129]: Settings
+            - listitem [ref=e3355]:
+              - generic "New version available" [ref=e3356]:
+                - button "Upgrade" [ref=e3358] [cursor=pointer]:
+                  - img [ref=e3359]
+                  - text: Upgrade
+            - listitem [ref=e131]:
+              - link "Sponsor us" [ref=e132] [cursor=pointer]:
+                - /url: https://coolify.io/sponsorships
+                - img [ref=e133]
+                - generic [ref=e137]: Sponsor us
+            - listitem [ref=e138]:
+              - generic "Send us feedback or get help!" [ref=e141] [cursor=pointer]:
+                - img [ref=e142]
+                - generic [ref=e144]: Feedback
+            - listitem [ref=e145]:
+              - button "Logout" [ref=e147]:
+                - img [ref=e148]
+                - generic [ref=e150]: Logout
+    - main [ref=e151]:
+      - generic [ref=e153]:
+        - heading "Configuration" [level=1] [ref=e154]
+        - navigation [ref=e155]:
+          - navigation [ref=e156]:
+            - list [ref=e157]:
+              - listitem [ref=e158]:
+                - generic [ref=e159]:
+                  - link "Swissport Applications" [ref=e160] [cursor=pointer]:
+                    - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n
+                  - button [ref=e161]:
+                    - img [ref=e162]
+              - listitem [ref=e164]:
+                - generic [ref=e165]:
+                  - link "production" [ref=e166] [cursor=pointer]:
+                    - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm
+                  - button [ref=e167]:
+                    - img [ref=e168]
+              - listitem [ref=e170]:
+                - link "zentalko (localhost)" [ref=e171] [cursor=pointer]:
+                  - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl
+              - generic [ref=e173]:
+                - link "Running" [ref=e176] [cursor=pointer]:
+                  - /url: https://github.com/Oliveir4Matheus/Zentalko/commit/9faa83c12545072941ec272f23b2804fb1e76d73
+                - generic [ref=e177]: (unhealthy)
+                - img [ref=e181] [cursor=pointer]
+              - button "Refresh Status" [ref=e182]:
+                - img [ref=e183]
+          - generic [ref=e185]:
+            - navigation [ref=e186]:
+              - link "Configuration" [ref=e187] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl
+              - link "Deployments" [ref=e188] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/deployment
+              - link "Logs" [ref=e189] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/logs
+                - generic [ref=e190]: Logs
+              - link "Terminal" [ref=e191] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/terminal
+              - button "Links" [ref=e193]:
+                - generic [ref=e194]: Links
+                - img [ref=e195]
+            - generic [ref=e197]:
+              - button "Advanced" [ref=e200]:
+                - generic [ref=e201]: Advanced
+                - img [ref=e202]
+              - generic [ref=e204]:
+                - button "Redeploy" [ref=e205] [cursor=pointer]:
+                  - img [ref=e206]
+                  - text: Redeploy
+                - button "Stop" [ref=e209] [cursor=pointer]:
+                  - img [ref=e210]
+                  - text: Stop
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - link "General" [ref=e214] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl
+              - generic [ref=e215]: General
+            - link "Advanced" [ref=e216] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/advanced
+              - generic [ref=e217]: Advanced
+            - link "Environment Variables" [ref=e218] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/environment-variables
+              - generic [ref=e219]: Environment Variables
+            - link "Persistent Storage" [ref=e220] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/persistent-storage
+              - generic [ref=e221]: Persistent Storage
+            - link "Git Source" [ref=e222] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/source
+              - generic [ref=e223]: Git Source
+            - link "Servers" [ref=e224] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/servers
+              - generic [ref=e225]: Servers
+            - link "Scheduled Tasks" [ref=e226] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/scheduled-tasks
+              - generic [ref=e227]: Scheduled Tasks
+            - link "Webhooks" [ref=e228] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/webhooks
+              - generic [ref=e229]: Webhooks
+            - link "Preview Deployments" [ref=e230] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/preview-deployments
+              - generic [ref=e231]: Preview Deployments
+            - link "Rollback" [ref=e232] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/rollback
+              - generic [ref=e233]: Rollback
+            - link "Resource Limits" [ref=e234] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/resource-limits
+              - generic [ref=e235]: Resource Limits
+            - link "Resource Operations" [ref=e236] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/resource-operations
+              - generic [ref=e237]: Resource Operations
+            - link "Metrics" [ref=e238] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/metrics
+              - generic [ref=e239]: Metrics
+            - link "Tags" [ref=e240] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/tags
+              - generic [ref=e241]: Tags
+            - link "Danger Zone" [ref=e242] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/danger
+              - generic [ref=e243]: Danger Zone
+          - generic [ref=e245]:
+            - generic [ref=e246]:
+              - generic [ref=e247]:
+                - heading "Environment Variables" [level=2] [ref=e248]
+                - button "+ Add" [ref=e251] [cursor=pointer]
+                - button "Developer view" [ref=e252] [cursor=pointer]
+              - generic [ref=e253]: Environment variables (secrets) for this resource.
+              - generic [ref=e257]:
+                - generic [ref=e258]:
+                  - text: Use Docker Build Secrets
+                  - img [ref=e261] [cursor=pointer]
+                - checkbox "Use Docker Build Secrets" [ref=e263] [cursor=pointer]
+            - generic [ref=e264]:
+              - heading "Production Environment Variables" [level=3] [ref=e265]
+              - generic [ref=e266]: Environment (secrets) variables for Production.
+            - generic [ref=e268]:
+              - generic [ref=e269]:
+                - generic [ref=e270]:
+                  - textbox [ref=e272]: POSTGRES_USER
+                  - generic [ref=e275]:
+                    - button "Toggle password visibility" [ref=e276] [cursor=pointer]
+                    - textbox [ref=e281]: zentalko
+                - generic [ref=e282]:
+                  - generic [ref=e283]:
+                    - text: Comment
+                    - img [ref=e286] [cursor=pointer]
+                  - textbox [ref=e288]
+              - generic [ref=e289]:
+                - generic [ref=e290]:
+                  - generic [ref=e292]:
+                    - generic [ref=e293]
+                    - checkbox "Available at Buildtime" [checked] [ref=e298] [cursor=pointer]
+                  - generic [ref=e300]:
+                    - generic [ref=e301]
+                    - checkbox "Available at Runtime" [checked] [ref=e306] [cursor=pointer]
+                  - generic [ref=e308]:
+                    - generic [ref=e309]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e310] [cursor=pointer]
+                  - generic [ref=e312]:
+                    - generic [ref=e313]
+                    - checkbox "Is Literal?" [ref=e318] [cursor=pointer]
+                - generic [ref=e319]:
+                  - button "Update" [ref=e320] [cursor=pointer]
+                  - button "Lock" [ref=e321] [cursor=pointer]
+                  - button "Delete" [ref=e323] [cursor=pointer]
+            - generic [ref=e325]:
+              - generic [ref=e326]:
+                - generic [ref=e327]:
+                  - textbox [ref=e329]: POSTGRES_PASSWORD
+                  - generic [ref=e332]:
+                    - button "Toggle password visibility" [ref=e333] [cursor=pointer]
+                    - textbox [ref=e338]: pJyPRPOkxpCYQx3xQO0zW39TgY72Izw4
+                - generic [ref=e339]:
+                  - generic [ref=e340]:
+                    - text: Comment
+                    - img [ref=e343] [cursor=pointer]
+                  - textbox [ref=e345]
+              - generic [ref=e346]:
+                - generic [ref=e347]:
+                  - generic [ref=e349]:
+                    - generic [ref=e350]
+                    - checkbox "Available at Buildtime" [checked] [ref=e355] [cursor=pointer]
+                  - generic [ref=e357]:
+                    - generic [ref=e358]
+                    - checkbox "Available at Runtime" [checked] [ref=e363] [cursor=pointer]
+                  - generic [ref=e365]:
+                    - generic [ref=e366]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e367] [cursor=pointer]
+                  - generic [ref=e369]:
+                    - generic [ref=e370]
+                    - checkbox "Is Literal?" [ref=e375] [cursor=pointer]
+                - generic [ref=e376]:
+                  - button "Update" [ref=e377] [cursor=pointer]
+                  - button "Lock" [ref=e378] [cursor=pointer]
+                  - button "Delete" [ref=e380] [cursor=pointer]
+            - generic [ref=e382]:
+              - generic [ref=e383]:
+                - generic [ref=e384]:
+                  - textbox [ref=e386]: POSTGRES_DB
+                  - generic [ref=e389]:
+                    - button "Toggle password visibility" [ref=e390] [cursor=pointer]
+                    - textbox [ref=e395]: zentalko
+                - generic [ref=e396]:
+                  - generic [ref=e397]:
+                    - text: Comment
+                    - img [ref=e400] [cursor=pointer]
+                  - textbox [ref=e402]
+              - generic [ref=e403]:
+                - generic [ref=e404]:
+                  - generic [ref=e406]:
+                    - generic [ref=e407]
+                    - checkbox "Available at Buildtime" [checked] [ref=e412] [cursor=pointer]
+                  - generic [ref=e414]:
+                    - generic [ref=e415]
+                    - checkbox "Available at Runtime" [checked] [ref=e420] [cursor=pointer]
+                  - generic [ref=e422]:
+                    - generic [ref=e423]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e424] [cursor=pointer]
+                  - generic [ref=e426]:
+                    - generic [ref=e427]
+                    - checkbox "Is Literal?" [ref=e432] [cursor=pointer]
+                - generic [ref=e433]:
+                  - button "Update" [ref=e434] [cursor=pointer]
+                  - button "Lock" [ref=e435] [cursor=pointer]
+                  - button "Delete" [ref=e437] [cursor=pointer]
+            - generic [ref=e439]:
+              - generic [ref=e440]:
+                - generic [ref=e441]:
+                  - textbox [ref=e443]: POSTGRES_DB
+                  - generic [ref=e446]:
+                    - button "Toggle password visibility" [ref=e447] [cursor=pointer]
+                    - textbox [ref=e452]: zentalko
+                - generic [ref=e453]:
+                  - generic [ref=e454]:
+                    - text: Comment
+                    - img [ref=e457] [cursor=pointer]
+                  - textbox [ref=e459]
+              - generic [ref=e460]:
+                - generic [ref=e461]:
+                  - generic [ref=e463]:
+                    - generic [ref=e464]
+                    - checkbox "Available at Buildtime" [checked] [ref=e469] [cursor=pointer]
+                  - generic [ref=e471]:
+                    - generic [ref=e472]
+                    - checkbox "Available at Runtime" [checked] [ref=e477] [cursor=pointer]
+                  - generic [ref=e479]:
+                    - generic [ref=e480]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e481] [cursor=pointer]
+                  - generic [ref=e483]:
+                    - generic [ref=e484]
+                    - checkbox "Is Literal?" [ref=e489] [cursor=pointer]
+                - generic [ref=e490]:
+                  - button "Update" [ref=e491] [cursor=pointer]
+                  - button "Lock" [ref=e492] [cursor=pointer]
+                  - button "Delete" [ref=e494] [cursor=pointer]
+            - generic [ref=e496]:
+              - generic [ref=e497]:
+                - generic [ref=e498]:
+                  - textbox [ref=e500]: DATABASE_URL
+                  - generic [ref=e503]:
+                    - button "Toggle password visibility" [ref=e504] [cursor=pointer]
+                    - textbox [ref=e509]: postgres://zentalko:pJyPRPOkxpCYQx3xQO0zW39TgY72Izw4@db:5432/zentalko
+                - generic [ref=e510]:
+                  - generic [ref=e511]:
+                    - text: Comment
+                    - img [ref=e514] [cursor=pointer]
+                  - textbox [ref=e516]
+              - generic [ref=e517]:
+                - generic [ref=e518]:
+                  - generic [ref=e520]:
+                    - generic [ref=e521]
+                    - checkbox "Available at Buildtime" [checked] [ref=e526] [cursor=pointer]
+                  - generic [ref=e528]:
+                    - generic [ref=e529]
+                    - checkbox "Available at Runtime" [checked] [ref=e534] [cursor=pointer]
+                  - generic [ref=e536]:
+                    - generic [ref=e537]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e538] [cursor=pointer]
+                  - generic [ref=e540]:
+                    - generic [ref=e541]
+                    - checkbox "Is Literal?" [ref=e546] [cursor=pointer]
+                - generic [ref=e547]:
+                  - button "Update" [ref=e548] [cursor=pointer]
+                  - button "Lock" [ref=e549] [cursor=pointer]
+                  - button "Delete" [ref=e551] [cursor=pointer]
+            - generic [ref=e553]:
+              - generic [ref=e554]:
+                - generic [ref=e555]:
+                  - textbox [ref=e557]: AUTH_SECRET
+                  - generic [ref=e560]:
+                    - button "Toggle password visibility" [ref=e561] [cursor=pointer]
+                    - textbox [ref=e566]: dspM7PpMq3WQ0ETeXvpVo7DShtGwzkeULqlCushFnKA=
+                - generic [ref=e567]:
+                  - generic [ref=e568]:
+                    - text: Comment
+                    - img [ref=e571] [cursor=pointer]
+                  - textbox [ref=e573]
+              - generic [ref=e574]:
+                - generic [ref=e575]:
+                  - generic [ref=e577]:
+                    - generic [ref=e578]
+                    - checkbox "Available at Buildtime" [checked] [ref=e583] [cursor=pointer]
+                  - generic [ref=e585]:
+                    - generic [ref=e586]
+                    - checkbox "Available at Runtime" [checked] [ref=e591] [cursor=pointer]
+                  - generic [ref=e593]:
+                    - generic [ref=e594]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e595] [cursor=pointer]
+                  - generic [ref=e597]:
+                    - generic [ref=e598]
+                    - checkbox "Is Literal?" [ref=e603] [cursor=pointer]
+                - generic [ref=e604]:
+                  - button "Update" [ref=e605] [cursor=pointer]
+                  - button "Lock" [ref=e606] [cursor=pointer]
+                  - button "Delete" [ref=e608] [cursor=pointer]
+            - generic [ref=e610]:
+              - generic [ref=e611]:
+                - generic [ref=e612]:
+                  - textbox [ref=e614]: AUTH_URL
+                  - generic [ref=e617]:
+                    - button "Toggle password visibility" [ref=e618] [cursor=pointer]
+                    - textbox [ref=e623]: https://app.seudominio.com
+                - generic [ref=e624]:
+                  - generic [ref=e625]:
+                    - text: Comment
+                    - img [ref=e628] [cursor=pointer]
+                  - textbox [ref=e630]
+              - generic [ref=e631]:
+                - generic [ref=e632]:
+                  - generic [ref=e634]:
+                    - generic [ref=e635]
+                    - checkbox "Available at Buildtime" [checked] [ref=e640] [cursor=pointer]
+                  - generic [ref=e642]:
+                    - generic [ref=e643]
+                    - checkbox "Available at Runtime" [checked] [ref=e648] [cursor=pointer]
+                  - generic [ref=e650]:
+                    - generic [ref=e651]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e652] [cursor=pointer]
+                  - generic [ref=e654]:
+                    - generic [ref=e655]
+                    - checkbox "Is Literal?" [ref=e660] [cursor=pointer]
+                - generic [ref=e661]:
+                  - button "Update" [ref=e662] [cursor=pointer]
+                  - button "Lock" [ref=e663] [cursor=pointer]
+                  - button "Delete" [ref=e665] [cursor=pointer]
+            - generic [ref=e667]:
+              - generic [ref=e668]:
+                - generic [ref=e669]:
+                  - textbox [ref=e671]: BYOK_ENCRYPTION_KEY
+                  - generic [ref=e674]:
+                    - button "Toggle password visibility" [ref=e675] [cursor=pointer]
+                    - textbox [ref=e680]: pfddlJ1vITbzgjXeC66VY87vqZzPQqLqlU6M1/BF4cA=
+                - generic [ref=e681]:
+                  - generic [ref=e682]:
+                    - text: Comment
+                    - img [ref=e685] [cursor=pointer]
+                  - textbox [ref=e687]
+              - generic [ref=e688]:
+                - generic [ref=e689]:
+                  - generic [ref=e691]:
+                    - generic [ref=e692]
+                    - checkbox "Available at Buildtime" [checked] [ref=e697] [cursor=pointer]
+                  - generic [ref=e699]:
+                    - generic [ref=e700]
+                    - checkbox "Available at Runtime" [checked] [ref=e705] [cursor=pointer]
+                  - generic [ref=e707]:
+                    - generic [ref=e708]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e709] [cursor=pointer]
+                  - generic [ref=e711]:
+                    - generic [ref=e712]
+                    - checkbox "Is Literal?" [ref=e717] [cursor=pointer]
+                - generic [ref=e718]:
+                  - button "Update" [ref=e719] [cursor=pointer]
+                  - button "Lock" [ref=e720] [cursor=pointer]
+                  - button "Delete" [ref=e722] [cursor=pointer]
+            - generic [ref=e724]:
+              - generic [ref=e725]:
+                - generic [ref=e726]:
+                  - textbox [ref=e728]: STORAGE_ENDPOINT
+                  - generic [ref=e731]:
+                    - button "Toggle password visibility" [ref=e732] [cursor=pointer]
+                    - textbox [ref=e737]: http://storage:9000
+                - generic [ref=e738]:
+                  - generic [ref=e739]:
+                    - text: Comment
+                    - img [ref=e742] [cursor=pointer]
+                  - textbox [ref=e744]
+              - generic [ref=e745]:
+                - generic [ref=e746]:
+                  - generic [ref=e748]:
+                    - generic [ref=e749]
+                    - checkbox "Available at Buildtime" [checked] [ref=e754] [cursor=pointer]
+                  - generic [ref=e756]:
+                    - generic [ref=e757]
+                    - checkbox "Available at Runtime" [checked] [ref=e762] [cursor=pointer]
+                  - generic [ref=e764]:
+                    - generic [ref=e765]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e766] [cursor=pointer]
+                  - generic [ref=e768]:
+                    - generic [ref=e769]
+                    - checkbox "Is Literal?" [ref=e774] [cursor=pointer]
+                - generic [ref=e775]:
+                  - button "Update" [ref=e776] [cursor=pointer]
+                  - button "Lock" [ref=e777] [cursor=pointer]
+                  - button "Delete" [ref=e779] [cursor=pointer]
+            - generic [ref=e781]:
+              - generic [ref=e782]:
+                - generic [ref=e783]:
+                  - textbox [ref=e785]: STORAGE_ACCESS_KEY
+                  - generic [ref=e788]:
+                    - button "Toggle password visibility" [ref=e789] [cursor=pointer]
+                    - textbox [ref=e794]: af3b54cbb923d760aeb2c3bd
+                - generic [ref=e795]:
+                  - generic [ref=e796]:
+                    - text: Comment
+                    - img [ref=e799] [cursor=pointer]
+                  - textbox [ref=e801]
+              - generic [ref=e802]:
+                - generic [ref=e803]:
+                  - generic [ref=e805]:
+                    - generic [ref=e806]
+                    - checkbox "Available at Buildtime" [checked] [ref=e811] [cursor=pointer]
+                  - generic [ref=e813]:
+                    - generic [ref=e814]
+                    - checkbox "Available at Runtime" [checked] [ref=e819] [cursor=pointer]
+                  - generic [ref=e821]:
+                    - generic [ref=e822]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e823] [cursor=pointer]
+                  - generic [ref=e825]:
+                    - generic [ref=e826]
+                    - checkbox "Is Literal?" [ref=e831] [cursor=pointer]
+                - generic [ref=e832]:
+                  - button "Update" [ref=e833] [cursor=pointer]
+                  - button "Lock" [ref=e834] [cursor=pointer]
+                  - button "Delete" [ref=e836] [cursor=pointer]
+            - generic [ref=e838]:
+              - generic [ref=e839]:
+                - generic [ref=e840]:
+                  - textbox [ref=e842]: STORAGE_SECRET_KEY
+                  - generic [ref=e845]:
+                    - button "Toggle password visibility" [ref=e846] [cursor=pointer]
+                    - textbox [ref=e851]: 9977dd40dadab2b013b65c5be94de588c33d9f4a272e45a91cfddab8012e37ec
+                - generic [ref=e852]:
+                  - generic [ref=e853]:
+                    - text: Comment
+                    - img [ref=e856] [cursor=pointer]
+                  - textbox [ref=e858]
+              - generic [ref=e859]:
+                - generic [ref=e860]:
+                  - generic [ref=e862]:
+                    - generic [ref=e863]
+                    - checkbox "Available at Buildtime" [checked] [ref=e868] [cursor=pointer]
+                  - generic [ref=e870]:
+                    - generic [ref=e871]
+                    - checkbox "Available at Runtime" [checked] [ref=e876] [cursor=pointer]
+                  - generic [ref=e878]:
+                    - generic [ref=e879]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e880] [cursor=pointer]
+                  - generic [ref=e882]:
+                    - generic [ref=e883]
+                    - checkbox "Is Literal?" [ref=e888] [cursor=pointer]
+                - generic [ref=e889]:
+                  - button "Update" [ref=e890] [cursor=pointer]
+                  - button "Lock" [ref=e891] [cursor=pointer]
+                  - button "Delete" [ref=e893] [cursor=pointer]
+            - generic [ref=e895]:
+              - generic [ref=e896]:
+                - generic [ref=e897]:
+                  - textbox [ref=e899]: STORAGE_SECRET_KEY
+                  - generic [ref=e902]:
+                    - button "Toggle password visibility" [ref=e903] [cursor=pointer]
+                    - textbox [ref=e908]: 9977dd40dadab2b013b65c5be94de588c33d9f4a272e45a91cfddab8012e37ec
+                - generic [ref=e909]:
+                  - generic [ref=e910]:
+                    - text: Comment
+                    - img [ref=e913] [cursor=pointer]
+                  - textbox [ref=e915]
+              - generic [ref=e916]:
+                - generic [ref=e917]:
+                  - generic [ref=e919]:
+                    - generic [ref=e920]
+                    - checkbox "Available at Buildtime" [checked] [ref=e925] [cursor=pointer]
+                  - generic [ref=e927]:
+                    - generic [ref=e928]
+                    - checkbox "Available at Runtime" [checked] [ref=e933] [cursor=pointer]
+                  - generic [ref=e935]:
+                    - generic [ref=e936]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e937] [cursor=pointer]
+                  - generic [ref=e939]:
+                    - generic [ref=e940]
+                    - checkbox "Is Literal?" [ref=e945] [cursor=pointer]
+                - generic [ref=e946]:
+                  - button "Update" [ref=e947] [cursor=pointer]
+                  - button "Lock" [ref=e948] [cursor=pointer]
+                  - button "Delete" [ref=e950] [cursor=pointer]
+            - generic [ref=e952]:
+              - generic [ref=e953]:
+                - generic [ref=e954]:
+                  - textbox [ref=e956]: STORAGE_BUCKET
+                  - generic [ref=e959]:
+                    - button "Toggle password visibility" [ref=e960] [cursor=pointer]
+                    - textbox [ref=e965]: zentalko
+                - generic [ref=e966]:
+                  - generic [ref=e967]:
+                    - text: Comment
+                    - img [ref=e970] [cursor=pointer]
+                  - textbox [ref=e972]
+              - generic [ref=e973]:
+                - generic [ref=e974]:
+                  - generic [ref=e976]:
+                    - generic [ref=e977]
+                    - checkbox "Available at Buildtime" [checked] [ref=e982] [cursor=pointer]
+                  - generic [ref=e984]:
+                    - generic [ref=e985]
+                    - checkbox "Available at Runtime" [checked] [ref=e990] [cursor=pointer]
+                  - generic [ref=e992]:
+                    - generic [ref=e993]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e994] [cursor=pointer]
+                  - generic [ref=e996]:
+                    - generic [ref=e997]
+                    - checkbox "Is Literal?" [ref=e1002] [cursor=pointer]
+                - generic [ref=e1003]:
+                  - button "Update" [ref=e1004] [cursor=pointer]
+                  - button "Lock" [ref=e1005] [cursor=pointer]
+                  - button "Delete" [ref=e1007] [cursor=pointer]
+            - generic [ref=e1009]:
+              - generic [ref=e1010]:
+                - generic [ref=e1011]:
+                  - textbox [ref=e1013]: STORAGE_PUBLIC_URL
+                  - generic [ref=e1016]:
+                    - button "Toggle password visibility" [ref=e1017] [cursor=pointer]
+                    - textbox [ref=e1022]: https://storage.seudominio.com
+                - generic [ref=e1023]:
+                  - generic [ref=e1024]:
+                    - text: Comment
+                    - img [ref=e1027] [cursor=pointer]
+                  - textbox [ref=e1029]
+              - generic [ref=e1030]:
+                - generic [ref=e1031]:
+                  - generic [ref=e1033]:
+                    - generic [ref=e1034]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1039] [cursor=pointer]
+                  - generic [ref=e1041]:
+                    - generic [ref=e1042]
+                    - checkbox "Available at Runtime" [checked] [ref=e1047] [cursor=pointer]
+                  - generic [ref=e1049]:
+                    - generic [ref=e1050]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1051] [cursor=pointer]
+                  - generic [ref=e1053]:
+                    - generic [ref=e1054]
+                    - checkbox "Is Literal?" [ref=e1059] [cursor=pointer]
+                - generic [ref=e1060]:
+                  - button "Update" [ref=e1061] [cursor=pointer]
+                  - button "Lock" [ref=e1062] [cursor=pointer]
+                  - button "Delete" [ref=e1064] [cursor=pointer]
+            - generic [ref=e1066]:
+              - generic [ref=e1067]:
+                - generic [ref=e1068]:
+                  - textbox [ref=e1070]: STORAGE_PUBLIC_URL
+                  - generic [ref=e1073]:
+                    - button "Toggle password visibility" [ref=e1074] [cursor=pointer]
+                    - textbox [ref=e1079]: https://storage.seudominio.com
+                - generic [ref=e1080]:
+                  - generic [ref=e1081]:
+                    - text: Comment
+                    - img [ref=e1084] [cursor=pointer]
+                  - textbox [ref=e1086]
+              - generic [ref=e1087]:
+                - generic [ref=e1088]:
+                  - generic [ref=e1090]:
+                    - generic [ref=e1091]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1096] [cursor=pointer]
+                  - generic [ref=e1098]:
+                    - generic [ref=e1099]
+                    - checkbox "Available at Runtime" [checked] [ref=e1104] [cursor=pointer]
+                  - generic [ref=e1106]:
+                    - generic [ref=e1107]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1108] [cursor=pointer]
+                  - generic [ref=e1110]:
+                    - generic [ref=e1111]
+                    - checkbox "Is Literal?" [ref=e1116] [cursor=pointer]
+                - generic [ref=e1117]:
+                  - button "Update" [ref=e1118] [cursor=pointer]
+                  - button "Lock" [ref=e1119] [cursor=pointer]
+                  - button "Delete" [ref=e1121] [cursor=pointer]
+            - generic [ref=e1123]:
+              - generic [ref=e1124]:
+                - generic [ref=e1125]:
+                  - textbox [ref=e1127]: TTS_URL
+                  - generic [ref=e1130]:
+                    - button "Toggle password visibility" [ref=e1131] [cursor=pointer]
+                    - textbox [ref=e1136]: http://tts:8000 MYMEMORY_EMAIL=
+                - generic [ref=e1137]:
+                  - generic [ref=e1138]:
+                    - text: Comment
+                    - img [ref=e1141] [cursor=pointer]
+                  - textbox [ref=e1143]
+              - generic [ref=e1144]:
+                - generic [ref=e1145]:
+                  - generic [ref=e1147]:
+                    - generic [ref=e1148]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1153] [cursor=pointer]
+                  - generic [ref=e1155]:
+                    - generic [ref=e1156]
+                    - checkbox "Available at Runtime" [checked] [ref=e1161] [cursor=pointer]
+                  - generic [ref=e1163]:
+                    - generic [ref=e1164]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1165] [cursor=pointer]
+                  - generic [ref=e1167]:
+                    - generic [ref=e1168]
+                    - checkbox "Is Literal?" [ref=e1173] [cursor=pointer]
+                - generic [ref=e1174]:
+                  - button "Update" [ref=e1175] [cursor=pointer]
+                  - button "Lock" [ref=e1176] [cursor=pointer]
+                  - button "Delete" [ref=e1178] [cursor=pointer]
+            - generic [ref=e1180]:
+              - generic [ref=e1181]:
+                - generic [ref=e1182]:
+                  - textbox [ref=e1184]: TTS_URL
+                  - generic [ref=e1187]:
+                    - button "Toggle password visibility" [ref=e1188] [cursor=pointer]
+                    - textbox [ref=e1193]: http://tts:8000 MYMEMORY_EMAIL=
+                - generic [ref=e1194]:
+                  - generic [ref=e1195]:
+                    - text: Comment
+                    - img [ref=e1198] [cursor=pointer]
+                  - textbox [ref=e1200]
+              - generic [ref=e1201]:
+                - generic [ref=e1202]:
+                  - generic [ref=e1204]:
+                    - generic [ref=e1205]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1210] [cursor=pointer]
+                  - generic [ref=e1212]:
+                    - generic [ref=e1213]
+                    - checkbox "Available at Runtime" [checked] [ref=e1218] [cursor=pointer]
+                  - generic [ref=e1220]:
+                    - generic [ref=e1221]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1222] [cursor=pointer]
+                  - generic [ref=e1224]:
+                    - generic [ref=e1225]
+                    - checkbox "Is Literal?" [ref=e1230] [cursor=pointer]
+                - generic [ref=e1231]:
+                  - button "Update" [ref=e1232] [cursor=pointer]
+                  - button "Lock" [ref=e1233] [cursor=pointer]
+                  - button "Delete" [ref=e1235] [cursor=pointer]
+            - generic [ref=e1237]:
+              - generic [ref=e1238]:
+                - generic [ref=e1239]:
+                  - textbox [ref=e1241]: LOG_LEVEL
+                  - generic [ref=e1244]:
+                    - button "Toggle password visibility" [ref=e1245] [cursor=pointer]
+                    - textbox [ref=e1250]: info
+                - generic [ref=e1251]:
+                  - generic [ref=e1252]:
+                    - text: Comment
+                    - img [ref=e1255] [cursor=pointer]
+                  - textbox [ref=e1257]
+              - generic [ref=e1258]:
+                - generic [ref=e1259]:
+                  - generic [ref=e1261]:
+                    - generic [ref=e1262]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1267] [cursor=pointer]
+                  - generic [ref=e1269]:
+                    - generic [ref=e1270]
+                    - checkbox "Available at Runtime" [checked] [ref=e1275] [cursor=pointer]
+                  - generic [ref=e1277]:
+                    - generic [ref=e1278]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1279] [cursor=pointer]
+                  - generic [ref=e1281]:
+                    - generic [ref=e1282]
+                    - checkbox "Is Literal?" [ref=e1287] [cursor=pointer]
+                - generic [ref=e1288]:
+                  - button "Update" [ref=e1289] [cursor=pointer]
+                  - button "Lock" [ref=e1290] [cursor=pointer]
+                  - button "Delete" [ref=e1292] [cursor=pointer]
+            - generic [ref=e1294]:
+              - generic [ref=e1295]:
+                - generic [ref=e1296]:
+                  - textbox [ref=e1298]: NODE_ENV
+                  - generic [ref=e1301]:
+                    - button "Toggle password visibility" [ref=e1302] [cursor=pointer]
+                    - textbox [ref=e1307]: production
+                - generic [ref=e1308]:
+                  - generic [ref=e1309]:
+                    - text: Comment
+                    - img [ref=e1312] [cursor=pointer]
+                  - textbox [ref=e1314]
+              - generic [ref=e1315]:
+                - generic [ref=e1316]:
+                  - generic [ref=e1318]:
+                    - generic [ref=e1319]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1324] [cursor=pointer]
+                  - generic [ref=e1326]:
+                    - generic [ref=e1327]
+                    - checkbox "Available at Runtime" [checked] [ref=e1332] [cursor=pointer]
+                  - generic [ref=e1334]:
+                    - generic [ref=e1335]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1336] [cursor=pointer]
+                  - generic [ref=e1338]:
+                    - generic [ref=e1339]
+                    - checkbox "Is Literal?" [ref=e1344] [cursor=pointer]
+                - generic [ref=e1346]:
+                  - img [ref=e1348]
+                  - generic [ref=e1350]:
+                    - generic [ref=e1351]: Caution
+                    - generic [ref=e1352]
+                - generic [ref=e1355]:
+                  - button "Update" [ref=e1356] [cursor=pointer]
+                  - button "Lock" [ref=e1357] [cursor=pointer]
+                  - button "Delete" [ref=e1359] [cursor=pointer]
+            - generic [ref=e1361]:
+              - generic [ref=e1362]:
+                - generic [ref=e1363]:
+                  - textbox [disabled] [ref=e1365]: SERVICE_FQDN_WEB
+                  - generic [ref=e1367]:
+                    - button "Toggle password visibility" [ref=e1368] [cursor=pointer]
+                    - textbox [disabled] [ref=e1373]: zentalko.dartenmind.com.br
+                - generic [ref=e1374]:
+                  - generic [ref=e1375]:
+                    - text: Comment
+                    - img [ref=e1378] [cursor=pointer]
+                  - textbox "This env cannot be edited manually, it is handled by Coolify." [ref=e1380]
+              - generic [ref=e1382]:
+                - generic [ref=e1384]:
+                  - generic [ref=e1385]:
+                    - text: Available at Buildtime
+                    - img [ref=e1388] [cursor=pointer]
+                  - checkbox "Available at Buildtime" [checked] [ref=e1390] [cursor=pointer]
+                - generic [ref=e1392]:
+                  - generic [ref=e1393]:
+                    - text: Available at Runtime
+                    - img [ref=e1396] [cursor=pointer]
+                  - checkbox "Available at Runtime" [checked] [ref=e1398] [cursor=pointer]
+            - generic [ref=e1400]:
+              - generic [ref=e1401]:
+                - generic [ref=e1402]:
+                  - textbox [disabled] [ref=e1404]: SERVICE_URL_WEB
+                  - generic [ref=e1406]:
+                    - button "Toggle password visibility" [ref=e1407] [cursor=pointer]
+                    - textbox [disabled] [ref=e1412]: https://zentalko.dartenmind.com.br
+                - generic [ref=e1413]:
+                  - generic [ref=e1414]:
+                    - text: Comment
+                    - img [ref=e1417] [cursor=pointer]
+                  - textbox "This env cannot be edited manually, it is handled by Coolify." [ref=e1419]
+              - generic [ref=e1421]:
+                - generic [ref=e1423]:
+                  - generic [ref=e1424]:
+                    - text: Available at Buildtime
+                    - img [ref=e1427] [cursor=pointer]
+                  - checkbox "Available at Buildtime" [checked] [ref=e1429] [cursor=pointer]
+                - generic [ref=e1431]:
+                  - generic [ref=e1432]:
+                    - text: Available at Runtime
+                    - img [ref=e1435] [cursor=pointer]
+                  - checkbox "Available at Runtime" [checked] [ref=e1437] [cursor=pointer]
+            - generic [ref=e1439]:
+              - generic [ref=e1440]:
+                - generic [ref=e1441]:
+                  - textbox [ref=e1443]: AUTH_GOOGLE_ID
+                  - generic [ref=e1446]:
+                    - button "Toggle password visibility" [ref=e1447] [cursor=pointer]
+                    - textbox [ref=e1452]
+                - generic [ref=e1453]:
+                  - generic [ref=e1454]:
+                    - text: Comment
+                    - img [ref=e1457] [cursor=pointer]
+                  - textbox [ref=e1459]
+              - generic [ref=e1460]:
+                - generic [ref=e1461]:
+                  - generic [ref=e1463]:
+                    - generic [ref=e1464]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1469] [cursor=pointer]
+                  - generic [ref=e1471]:
+                    - generic [ref=e1472]
+                    - checkbox "Available at Runtime" [checked] [ref=e1477] [cursor=pointer]
+                  - generic [ref=e1479]:
+                    - generic [ref=e1480]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1481] [cursor=pointer]
+                  - generic [ref=e1483]:
+                    - generic [ref=e1484]
+                    - checkbox "Is Literal?" [ref=e1489] [cursor=pointer]
+                - generic [ref=e1490]:
+                  - button "Update" [ref=e1491] [cursor=pointer]
+                  - button "Lock" [ref=e1492] [cursor=pointer]
+                  - button "Delete" [ref=e1494] [cursor=pointer]
+            - generic [ref=e1496]:
+              - generic [ref=e1497]:
+                - generic [ref=e1498]:
+                  - textbox [ref=e1500]: AUTH_GOOGLE_SECRET
+                  - generic [ref=e1503]:
+                    - button "Toggle password visibility" [ref=e1504] [cursor=pointer]
+                    - textbox [ref=e1509]
+                - generic [ref=e1510]:
+                  - generic [ref=e1511]:
+                    - text: Comment
+                    - img [ref=e1514] [cursor=pointer]
+                  - textbox [ref=e1516]
+              - generic [ref=e1517]:
+                - generic [ref=e1518]:
+                  - generic [ref=e1520]:
+                    - generic [ref=e1521]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1526] [cursor=pointer]
+                  - generic [ref=e1528]:
+                    - generic [ref=e1529]
+                    - checkbox "Available at Runtime" [checked] [ref=e1534] [cursor=pointer]
+                  - generic [ref=e1536]:
+                    - generic [ref=e1537]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1538] [cursor=pointer]
+                  - generic [ref=e1540]:
+                    - generic [ref=e1541]
+                    - checkbox "Is Literal?" [ref=e1546] [cursor=pointer]
+                - generic [ref=e1547]:
+                  - button "Update" [ref=e1548] [cursor=pointer]
+                  - button "Lock" [ref=e1549] [cursor=pointer]
+                  - button "Delete" [ref=e1551] [cursor=pointer]
+            - generic [ref=e1553]:
+              - generic [ref=e1554]:
+                - generic [ref=e1555]:
+                  - textbox [ref=e1557]: MYMEMORY_EMAIL
+                  - generic [ref=e1560]:
+                    - button "Toggle password visibility" [ref=e1561] [cursor=pointer]
+                    - textbox [ref=e1566]
+                - generic [ref=e1567]:
+                  - generic [ref=e1568]:
+                    - text: Comment
+                    - img [ref=e1571] [cursor=pointer]
+                  - textbox [ref=e1573]
+              - generic [ref=e1574]:
+                - generic [ref=e1575]:
+                  - generic [ref=e1577]:
+                    - generic [ref=e1578]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1583] [cursor=pointer]
+                  - generic [ref=e1585]:
+                    - generic [ref=e1586]
+                    - checkbox "Available at Runtime" [checked] [ref=e1591] [cursor=pointer]
+                  - generic [ref=e1593]:
+                    - generic [ref=e1594]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1595] [cursor=pointer]
+                  - generic [ref=e1597]:
+                    - generic [ref=e1598]
+                    - checkbox "Is Literal?" [ref=e1603] [cursor=pointer]
+                - generic [ref=e1604]:
+                  - button "Update" [ref=e1605] [cursor=pointer]
+                  - button "Lock" [ref=e1606] [cursor=pointer]
+                  - button "Delete" [ref=e1608] [cursor=pointer]
+            - generic [ref=e1610]:
+              - generic [ref=e1611]:
+                - generic [ref=e1612]:
+                  - textbox [ref=e1614]: BYOK_ENCRYPTION_KEY
+                  - generic [ref=e1617]:
+                    - button "Toggle password visibility" [ref=e1618] [cursor=pointer]
+                    - textbox [ref=e1623]: pfddlJ1vITbzgjXeC66VY87vqZzPQqLqlU6M1/BF4cA=
+                - generic [ref=e1624]:
+                  - generic [ref=e1625]:
+                    - text: Comment
+                    - img [ref=e1628] [cursor=pointer]
+                  - textbox [ref=e1630]
+              - generic [ref=e1631]:
+                - generic [ref=e1632]:
+                  - generic [ref=e1634]:
+                    - generic [ref=e1635]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1640] [cursor=pointer]
+                  - generic [ref=e1642]:
+                    - generic [ref=e1643]
+                    - checkbox "Available at Runtime" [checked] [ref=e1648] [cursor=pointer]
+                  - generic [ref=e1650]:
+                    - generic [ref=e1651]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1652] [cursor=pointer]
+                  - generic [ref=e1654]:
+                    - generic [ref=e1655]
+                    - checkbox "Is Literal?" [ref=e1660] [cursor=pointer]
+                - generic [ref=e1661]:
+                  - button "Update" [ref=e1662] [cursor=pointer]
+                  - button "Lock" [ref=e1663] [cursor=pointer]
+                  - button "Delete" [ref=e1665] [cursor=pointer]
+            - generic [ref=e1667]:
+              - generic [ref=e1668]:
+                - generic [ref=e1669]:
+                  - textbox [ref=e1671]: AUTH_URL
+                  - generic [ref=e1674]:
+                    - button "Toggle password visibility" [ref=e1675] [cursor=pointer]
+                    - textbox [ref=e1680]: https://app.seudominio.com AUTH_GOOGLE_ID=
+                - generic [ref=e1681]:
+                  - generic [ref=e1682]:
+                    - text: Comment
+                    - img [ref=e1685] [cursor=pointer]
+                  - textbox [ref=e1687]
+              - generic [ref=e1688]:
+                - generic [ref=e1689]:
+                  - generic [ref=e1691]:
+                    - generic [ref=e1692]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1697] [cursor=pointer]
+                  - generic [ref=e1699]:
+                    - generic [ref=e1700]
+                    - checkbox "Available at Runtime" [checked] [ref=e1705] [cursor=pointer]
+                  - generic [ref=e1707]:
+                    - generic [ref=e1708]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1709] [cursor=pointer]
+                  - generic [ref=e1711]:
+                    - generic [ref=e1712]
+                    - checkbox "Is Literal?" [ref=e1717] [cursor=pointer]
+                - generic [ref=e1718]:
+                  - button "Update" [ref=e1719] [cursor=pointer]
+                  - button "Lock" [ref=e1720] [cursor=pointer]
+                  - button "Delete" [ref=e1722] [cursor=pointer]
+            - generic [ref=e1724]:
+              - generic [ref=e1725]:
+                - generic [ref=e1726]:
+                  - textbox [ref=e1728]: LOG_LEVEL
+                  - generic [ref=e1731]:
+                    - button "Toggle password visibility" [ref=e1732] [cursor=pointer]
+                    - textbox [ref=e1737]: info
+                - generic [ref=e1738]:
+                  - generic [ref=e1739]:
+                    - text: Comment
+                    - img [ref=e1742] [cursor=pointer]
+                  - textbox [ref=e1744]
+              - generic [ref=e1745]:
+                - generic [ref=e1746]:
+                  - generic [ref=e1748]:
+                    - generic [ref=e1749]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1754] [cursor=pointer]
+                  - generic [ref=e1756]:
+                    - generic [ref=e1757]
+                    - checkbox "Available at Runtime" [checked] [ref=e1762] [cursor=pointer]
+                  - generic [ref=e1764]:
+                    - generic [ref=e1765]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1766] [cursor=pointer]
+                  - generic [ref=e1768]:
+                    - generic [ref=e1769]
+                    - checkbox "Is Literal?" [ref=e1774] [cursor=pointer]
+                - generic [ref=e1775]:
+                  - button "Update" [ref=e1776] [cursor=pointer]
+                  - button "Lock" [ref=e1777] [cursor=pointer]
+                  - button "Delete" [ref=e1779] [cursor=pointer]
+            - generic [ref=e1781]:
+              - generic [ref=e1782]:
+                - generic [ref=e1783]:
+                  - textbox [ref=e1785]: STORAGE_ACCESS_KEY
+                  - generic [ref=e1788]:
+                    - button "Toggle password visibility" [ref=e1789] [cursor=pointer]
+                    - textbox [ref=e1794]: af3b54cbb923d760aeb2c3bd
+                - generic [ref=e1795]:
+                  - generic [ref=e1796]:
+                    - text: Comment
+                    - img [ref=e1799] [cursor=pointer]
+                  - textbox [ref=e1801]
+              - generic [ref=e1802]:
+                - generic [ref=e1803]:
+                  - generic [ref=e1805]:
+                    - generic [ref=e1806]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1811] [cursor=pointer]
+                  - generic [ref=e1813]:
+                    - generic [ref=e1814]
+                    - checkbox "Available at Runtime" [checked] [ref=e1819] [cursor=pointer]
+                  - generic [ref=e1821]:
+                    - generic [ref=e1822]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1823] [cursor=pointer]
+                  - generic [ref=e1825]:
+                    - generic [ref=e1826]
+                    - checkbox "Is Literal?" [ref=e1831] [cursor=pointer]
+                - generic [ref=e1832]:
+                  - button "Update" [ref=e1833] [cursor=pointer]
+                  - button "Lock" [ref=e1834] [cursor=pointer]
+                  - button "Delete" [ref=e1836] [cursor=pointer]
+            - generic [ref=e1838]:
+              - generic [ref=e1839]:
+                - generic [ref=e1840]:
+                  - textbox [ref=e1842]: AUTH_GOOGLE_SECRET
+                  - generic [ref=e1845]:
+                    - button "Toggle password visibility" [ref=e1846] [cursor=pointer]
+                    - textbox [ref=e1851]
+                - generic [ref=e1852]:
+                  - generic [ref=e1853]:
+                    - text: Comment
+                    - img [ref=e1856] [cursor=pointer]
+                  - textbox [ref=e1858]
+              - generic [ref=e1859]:
+                - generic [ref=e1860]:
+                  - generic [ref=e1862]:
+                    - generic [ref=e1863]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1868] [cursor=pointer]
+                  - generic [ref=e1870]:
+                    - generic [ref=e1871]
+                    - checkbox "Available at Runtime" [checked] [ref=e1876] [cursor=pointer]
+                  - generic [ref=e1878]:
+                    - generic [ref=e1879]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1880] [cursor=pointer]
+                  - generic [ref=e1882]:
+                    - generic [ref=e1883]
+                    - checkbox "Is Literal?" [ref=e1888] [cursor=pointer]
+                - generic [ref=e1889]:
+                  - button "Update" [ref=e1890] [cursor=pointer]
+                  - button "Lock" [ref=e1891] [cursor=pointer]
+                  - button "Delete" [ref=e1893] [cursor=pointer]
+            - generic [ref=e1895]:
+              - generic [ref=e1896]:
+                - generic [ref=e1897]:
+                  - textbox [ref=e1899]: STORAGE_BUCKET
+                  - generic [ref=e1902]:
+                    - button "Toggle password visibility" [ref=e1903] [cursor=pointer]
+                    - textbox [ref=e1908]: zentalko
+                - generic [ref=e1909]:
+                  - generic [ref=e1910]:
+                    - text: Comment
+                    - img [ref=e1913] [cursor=pointer]
+                  - textbox [ref=e1915]
+              - generic [ref=e1916]:
+                - generic [ref=e1917]:
+                  - generic [ref=e1919]:
+                    - generic [ref=e1920]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1925] [cursor=pointer]
+                  - generic [ref=e1927]:
+                    - generic [ref=e1928]
+                    - checkbox "Available at Runtime" [checked] [ref=e1933] [cursor=pointer]
+                  - generic [ref=e1935]:
+                    - generic [ref=e1936]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1937] [cursor=pointer]
+                  - generic [ref=e1939]:
+                    - generic [ref=e1940]
+                    - checkbox "Is Literal?" [ref=e1945] [cursor=pointer]
+                - generic [ref=e1946]:
+                  - button "Update" [ref=e1947] [cursor=pointer]
+                  - button "Lock" [ref=e1948] [cursor=pointer]
+                  - button "Delete" [ref=e1950] [cursor=pointer]
+            - generic [ref=e1952]:
+              - generic [ref=e1953]:
+                - generic [ref=e1954]:
+                  - textbox [ref=e1956]: AUTH_GOOGLE_ID
+                  - generic [ref=e1959]:
+                    - button "Toggle password visibility" [ref=e1960] [cursor=pointer]
+                    - textbox [ref=e1965]
+                - generic [ref=e1966]:
+                  - generic [ref=e1967]:
+                    - text: Comment
+                    - img [ref=e1970] [cursor=pointer]
+                  - textbox [ref=e1972]
+              - generic [ref=e1973]:
+                - generic [ref=e1974]:
+                  - generic [ref=e1976]:
+                    - generic [ref=e1977]
+                    - checkbox "Available at Buildtime" [checked] [ref=e1982] [cursor=pointer]
+                  - generic [ref=e1984]:
+                    - generic [ref=e1985]
+                    - checkbox "Available at Runtime" [checked] [ref=e1990] [cursor=pointer]
+                  - generic [ref=e1992]:
+                    - generic [ref=e1993]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e1994] [cursor=pointer]
+                  - generic [ref=e1996]:
+                    - generic [ref=e1997]
+                    - checkbox "Is Literal?" [ref=e2002] [cursor=pointer]
+                - generic [ref=e2003]:
+                  - button "Update" [ref=e2004] [cursor=pointer]
+                  - button "Lock" [ref=e2005] [cursor=pointer]
+                  - button "Delete" [ref=e2007] [cursor=pointer]
+            - generic [ref=e2009]:
+              - generic [ref=e2010]:
+                - generic [ref=e2011]:
+                  - textbox [ref=e2013]: DATABASE_URL
+                  - generic [ref=e2016]:
+                    - button "Toggle password visibility" [ref=e2017] [cursor=pointer]
+                    - textbox [ref=e2022]: postgres://zentalko:pJyPRPOkxpCYQx3xQO0zW39TgY72Izw4@db:5432/zentalko
+                - generic [ref=e2023]:
+                  - generic [ref=e2024]:
+                    - text: Comment
+                    - img [ref=e2027] [cursor=pointer]
+                  - textbox [ref=e2029]
+              - generic [ref=e2030]:
+                - generic [ref=e2031]:
+                  - generic [ref=e2033]:
+                    - generic [ref=e2034]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2039] [cursor=pointer]
+                  - generic [ref=e2041]:
+                    - generic [ref=e2042]
+                    - checkbox "Available at Runtime" [checked] [ref=e2047] [cursor=pointer]
+                  - generic [ref=e2049]:
+                    - generic [ref=e2050]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2051] [cursor=pointer]
+                  - generic [ref=e2053]:
+                    - generic [ref=e2054]
+                    - checkbox "Is Literal?" [ref=e2059] [cursor=pointer]
+                - generic [ref=e2060]:
+                  - button "Update" [ref=e2061] [cursor=pointer]
+                  - button "Lock" [ref=e2062] [cursor=pointer]
+                  - button "Delete" [ref=e2064] [cursor=pointer]
+            - generic [ref=e2066]:
+              - generic [ref=e2067]:
+                - generic [ref=e2068]:
+                  - textbox [ref=e2070]: POSTGRES_PASSWORD
+                  - generic [ref=e2073]:
+                    - button "Toggle password visibility" [ref=e2074] [cursor=pointer]
+                    - textbox [ref=e2079]: pJyPRPOkxpCYQx3xQO0zW39TgY72Izw4
+                - generic [ref=e2080]:
+                  - generic [ref=e2081]:
+                    - text: Comment
+                    - img [ref=e2084] [cursor=pointer]
+                  - textbox [ref=e2086]
+              - generic [ref=e2087]:
+                - generic [ref=e2088]:
+                  - generic [ref=e2090]:
+                    - generic [ref=e2091]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2096] [cursor=pointer]
+                  - generic [ref=e2098]:
+                    - generic [ref=e2099]
+                    - checkbox "Available at Runtime" [checked] [ref=e2104] [cursor=pointer]
+                  - generic [ref=e2106]:
+                    - generic [ref=e2107]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2108] [cursor=pointer]
+                  - generic [ref=e2110]:
+                    - generic [ref=e2111]
+                    - checkbox "Is Literal?" [ref=e2116] [cursor=pointer]
+                - generic [ref=e2117]:
+                  - button "Update" [ref=e2118] [cursor=pointer]
+                  - button "Lock" [ref=e2119] [cursor=pointer]
+                  - button "Delete" [ref=e2121] [cursor=pointer]
+            - generic [ref=e2123]:
+              - generic [ref=e2124]:
+                - generic [ref=e2125]:
+                  - textbox [ref=e2127]: POSTGRES_USER
+                  - generic [ref=e2130]:
+                    - button "Toggle password visibility" [ref=e2131] [cursor=pointer]
+                    - textbox [ref=e2136]: zentalko
+                - generic [ref=e2137]:
+                  - generic [ref=e2138]:
+                    - text: Comment
+                    - img [ref=e2141] [cursor=pointer]
+                  - textbox [ref=e2143]
+              - generic [ref=e2144]:
+                - generic [ref=e2145]:
+                  - generic [ref=e2147]:
+                    - generic [ref=e2148]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2153] [cursor=pointer]
+                  - generic [ref=e2155]:
+                    - generic [ref=e2156]
+                    - checkbox "Available at Runtime" [checked] [ref=e2161] [cursor=pointer]
+                  - generic [ref=e2163]:
+                    - generic [ref=e2164]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2165] [cursor=pointer]
+                  - generic [ref=e2167]:
+                    - generic [ref=e2168]
+                    - checkbox "Is Literal?" [ref=e2173] [cursor=pointer]
+                - generic [ref=e2174]:
+                  - button "Update" [ref=e2175] [cursor=pointer]
+                  - button "Lock" [ref=e2176] [cursor=pointer]
+                  - button "Delete" [ref=e2178] [cursor=pointer]
+            - generic [ref=e2180]:
+              - generic [ref=e2181]:
+                - generic [ref=e2182]:
+                  - textbox [ref=e2184]: AUTH_SECRET
+                  - generic [ref=e2187]:
+                    - button "Toggle password visibility" [ref=e2188] [cursor=pointer]
+                    - textbox [ref=e2193]: dspM7PpMq3WQ0ETeXvpVo7DShtGwzkeULqlCushFnKA=
+                - generic [ref=e2194]:
+                  - generic [ref=e2195]:
+                    - text: Comment
+                    - img [ref=e2198] [cursor=pointer]
+                  - textbox [ref=e2200]
+              - generic [ref=e2201]:
+                - generic [ref=e2202]:
+                  - generic [ref=e2204]:
+                    - generic [ref=e2205]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2210] [cursor=pointer]
+                  - generic [ref=e2212]:
+                    - generic [ref=e2213]
+                    - checkbox "Available at Runtime" [checked] [ref=e2218] [cursor=pointer]
+                  - generic [ref=e2220]:
+                    - generic [ref=e2221]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2222] [cursor=pointer]
+                  - generic [ref=e2224]:
+                    - generic [ref=e2225]
+                    - checkbox "Is Literal?" [ref=e2230] [cursor=pointer]
+                - generic [ref=e2231]:
+                  - button "Update" [ref=e2232] [cursor=pointer]
+                  - button "Lock" [ref=e2233] [cursor=pointer]
+                  - button "Delete" [ref=e2235] [cursor=pointer]
+            - generic [ref=e2237]:
+              - generic [ref=e2238]:
+                - generic [ref=e2239]:
+                  - textbox [ref=e2241]: STORAGE_ENDPOINT
+                  - generic [ref=e2244]:
+                    - button "Toggle password visibility" [ref=e2245] [cursor=pointer]
+                    - textbox [ref=e2250]: http://storage:9000
+                - generic [ref=e2251]:
+                  - generic [ref=e2252]:
+                    - text: Comment
+                    - img [ref=e2255] [cursor=pointer]
+                  - textbox [ref=e2257]
+              - generic [ref=e2258]:
+                - generic [ref=e2259]:
+                  - generic [ref=e2261]:
+                    - generic [ref=e2262]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2267] [cursor=pointer]
+                  - generic [ref=e2269]:
+                    - generic [ref=e2270]
+                    - checkbox "Available at Runtime" [checked] [ref=e2275] [cursor=pointer]
+                  - generic [ref=e2277]:
+                    - generic [ref=e2278]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2279] [cursor=pointer]
+                  - generic [ref=e2281]:
+                    - generic [ref=e2282]
+                    - checkbox "Is Literal?" [ref=e2287] [cursor=pointer]
+                - generic [ref=e2288]:
+                  - button "Update" [ref=e2289] [cursor=pointer]
+                  - button "Lock" [ref=e2290] [cursor=pointer]
+                  - button "Delete" [ref=e2292] [cursor=pointer]
+            - generic [ref=e2294]:
+              - generic [ref=e2295]:
+                - generic [ref=e2296]: Hardcoded env
+                - generic [ref=e2297]: "Service: storage"
+              - generic [ref=e2299]:
+                - textbox [disabled] [ref=e2301]: MINIO_ROOT_USER
+                - generic [ref=e2303]:
+                  - button "Toggle password visibility" [ref=e2304] [cursor=pointer]:
+                    - img [ref=e2305]
+                  - textbox [disabled] [ref=e2309]: "${STORAGE_ACCESS_KEY}"
+            - generic [ref=e2311]:
+              - generic [ref=e2312]:
+                - generic [ref=e2313]: Hardcoded env
+                - generic [ref=e2314]: "Service: storage"
+              - generic [ref=e2316]:
+                - textbox [disabled] [ref=e2318]: MINIO_ROOT_PASSWORD
+                - generic [ref=e2320]:
+                  - button "Toggle password visibility" [ref=e2321] [cursor=pointer]:
+                    - img [ref=e2322]
+                  - textbox [disabled] [ref=e2326]: "${STORAGE_SECRET_KEY}"
+            - generic [ref=e2327]:
+              - heading "Preview Deployments Environment Variables" [level=3] [ref=e2328]
+              - generic [ref=e2329]: Environment (secrets) variables for Preview Deployments.
+            - generic [ref=e2331]:
+              - generic [ref=e2332]:
+                - generic [ref=e2333]:
+                  - textbox [disabled] [ref=e2335]: SERVICE_FQDN_WEB
+                  - generic [ref=e2337]:
+                    - button "Toggle password visibility" [ref=e2338] [cursor=pointer]
+                    - textbox [disabled] [ref=e2343]: zentalko.dartenmind.com.br
+                - generic [ref=e2344]:
+                  - generic [ref=e2345]:
+                    - text: Comment
+                    - img [ref=e2348] [cursor=pointer]
+                  - textbox "This env cannot be edited manually, it is handled by Coolify." [ref=e2350]
+              - generic [ref=e2352]:
+                - generic [ref=e2354]:
+                  - generic [ref=e2355]:
+                    - text: Available at Buildtime
+                    - img [ref=e2358] [cursor=pointer]
+                  - checkbox "Available at Buildtime" [checked] [ref=e2360] [cursor=pointer]
+                - generic [ref=e2362]:
+                  - generic [ref=e2363]:
+                    - text: Available at Runtime
+                    - img [ref=e2366] [cursor=pointer]
+                  - checkbox "Available at Runtime" [checked] [ref=e2368] [cursor=pointer]
+            - generic [ref=e2370]:
+              - generic [ref=e2371]:
+                - generic [ref=e2372]:
+                  - textbox [disabled] [ref=e2374]: SERVICE_URL_WEB
+                  - generic [ref=e2376]:
+                    - button "Toggle password visibility" [ref=e2377] [cursor=pointer]
+                    - textbox [disabled] [ref=e2382]: https://zentalko.dartenmind.com.br
+                - generic [ref=e2383]:
+                  - generic [ref=e2384]:
+                    - text: Comment
+                    - img [ref=e2387] [cursor=pointer]
+                  - textbox "This env cannot be edited manually, it is handled by Coolify." [ref=e2389]
+              - generic [ref=e2391]:
+                - generic [ref=e2393]:
+                  - generic [ref=e2394]:
+                    - text: Available at Buildtime
+                    - img [ref=e2397] [cursor=pointer]
+                  - checkbox "Available at Buildtime" [checked] [ref=e2399] [cursor=pointer]
+                - generic [ref=e2401]:
+                  - generic [ref=e2402]:
+                    - text: Available at Runtime
+                    - img [ref=e2405] [cursor=pointer]
+                  - checkbox "Available at Runtime" [checked] [ref=e2407] [cursor=pointer]
+            - generic [ref=e2409]:
+              - generic [ref=e2410]:
+                - generic [ref=e2411]:
+                  - textbox [ref=e2413]: AUTH_GOOGLE_ID
+                  - generic [ref=e2416]:
+                    - button "Toggle password visibility" [ref=e2417] [cursor=pointer]
+                    - textbox [ref=e2422]
+                - generic [ref=e2423]:
+                  - generic [ref=e2424]:
+                    - text: Comment
+                    - img [ref=e2427] [cursor=pointer]
+                  - textbox [ref=e2429]
+              - generic [ref=e2430]:
+                - generic [ref=e2431]:
+                  - generic [ref=e2433]:
+                    - generic [ref=e2434]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2439] [cursor=pointer]
+                  - generic [ref=e2441]:
+                    - generic [ref=e2442]
+                    - checkbox "Available at Runtime" [checked] [ref=e2447] [cursor=pointer]
+                  - generic [ref=e2449]:
+                    - generic [ref=e2450]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2451] [cursor=pointer]
+                  - generic [ref=e2453]:
+                    - generic [ref=e2454]
+                    - checkbox "Is Literal?" [ref=e2459] [cursor=pointer]
+                - generic [ref=e2460]:
+                  - button "Update" [ref=e2461] [cursor=pointer]
+                  - button "Lock" [ref=e2462] [cursor=pointer]
+                  - button "Delete" [ref=e2464] [cursor=pointer]
+            - generic [ref=e2466]:
+              - generic [ref=e2467]:
+                - generic [ref=e2468]:
+                  - textbox [ref=e2470]: AUTH_GOOGLE_SECRET
+                  - generic [ref=e2473]:
+                    - button "Toggle password visibility" [ref=e2474] [cursor=pointer]
+                    - textbox [ref=e2479]
+                - generic [ref=e2480]:
+                  - generic [ref=e2481]:
+                    - text: Comment
+                    - img [ref=e2484] [cursor=pointer]
+                  - textbox [ref=e2486]
+              - generic [ref=e2487]:
+                - generic [ref=e2488]:
+                  - generic [ref=e2490]:
+                    - generic [ref=e2491]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2496] [cursor=pointer]
+                  - generic [ref=e2498]:
+                    - generic [ref=e2499]
+                    - checkbox "Available at Runtime" [checked] [ref=e2504] [cursor=pointer]
+                  - generic [ref=e2506]:
+                    - generic [ref=e2507]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2508] [cursor=pointer]
+                  - generic [ref=e2510]:
+                    - generic [ref=e2511]
+                    - checkbox "Is Literal?" [ref=e2516] [cursor=pointer]
+                - generic [ref=e2517]:
+                  - button "Update" [ref=e2518] [cursor=pointer]
+                  - button "Lock" [ref=e2519] [cursor=pointer]
+                  - button "Delete" [ref=e2521] [cursor=pointer]
+            - generic [ref=e2523]:
+              - generic [ref=e2524]:
+                - generic [ref=e2525]:
+                  - textbox [ref=e2527]: AUTH_SECRET
+                  - generic [ref=e2530]:
+                    - button "Toggle password visibility" [ref=e2531] [cursor=pointer]
+                    - textbox [ref=e2536]
+                - generic [ref=e2537]:
+                  - generic [ref=e2538]:
+                    - text: Comment
+                    - img [ref=e2541] [cursor=pointer]
+                  - textbox [ref=e2543]
+              - generic [ref=e2544]:
+                - generic [ref=e2545]:
+                  - generic [ref=e2547]:
+                    - generic [ref=e2548]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2553] [cursor=pointer]
+                  - generic [ref=e2555]:
+                    - generic [ref=e2556]
+                    - checkbox "Available at Runtime" [checked] [ref=e2561] [cursor=pointer]
+                  - generic [ref=e2563]:
+                    - generic [ref=e2564]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2565] [cursor=pointer]
+                  - generic [ref=e2567]:
+                    - generic [ref=e2568]
+                    - checkbox "Is Literal?" [ref=e2573] [cursor=pointer]
+                - generic [ref=e2574]:
+                  - button "Update" [ref=e2575] [cursor=pointer]
+                  - button "Lock" [ref=e2576] [cursor=pointer]
+                  - button "Delete" [ref=e2578] [cursor=pointer]
+            - generic [ref=e2580]:
+              - generic [ref=e2581]:
+                - generic [ref=e2582]:
+                  - textbox [ref=e2584]: AUTH_URL
+                  - generic [ref=e2587]:
+                    - button "Toggle password visibility" [ref=e2588] [cursor=pointer]
+                    - textbox [ref=e2593]
+                - generic [ref=e2594]:
+                  - generic [ref=e2595]:
+                    - text: Comment
+                    - img [ref=e2598] [cursor=pointer]
+                  - textbox [ref=e2600]
+              - generic [ref=e2601]:
+                - generic [ref=e2602]:
+                  - generic [ref=e2604]:
+                    - generic [ref=e2605]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2610] [cursor=pointer]
+                  - generic [ref=e2612]:
+                    - generic [ref=e2613]
+                    - checkbox "Available at Runtime" [checked] [ref=e2618] [cursor=pointer]
+                  - generic [ref=e2620]:
+                    - generic [ref=e2621]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2622] [cursor=pointer]
+                  - generic [ref=e2624]:
+                    - generic [ref=e2625]
+                    - checkbox "Is Literal?" [ref=e2630] [cursor=pointer]
+                - generic [ref=e2631]:
+                  - button "Update" [ref=e2632] [cursor=pointer]
+                  - button "Lock" [ref=e2633] [cursor=pointer]
+                  - button "Delete" [ref=e2635] [cursor=pointer]
+            - generic [ref=e2637]:
+              - generic [ref=e2638]:
+                - generic [ref=e2639]:
+                  - textbox [ref=e2641]: BYOK_ENCRYPTION_KEY
+                  - generic [ref=e2644]:
+                    - button "Toggle password visibility" [ref=e2645] [cursor=pointer]
+                    - textbox [ref=e2650]
+                - generic [ref=e2651]:
+                  - generic [ref=e2652]:
+                    - text: Comment
+                    - img [ref=e2655] [cursor=pointer]
+                  - textbox [ref=e2657]
+              - generic [ref=e2658]:
+                - generic [ref=e2659]:
+                  - generic [ref=e2661]:
+                    - generic [ref=e2662]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2667] [cursor=pointer]
+                  - generic [ref=e2669]:
+                    - generic [ref=e2670]
+                    - checkbox "Available at Runtime" [checked] [ref=e2675] [cursor=pointer]
+                  - generic [ref=e2677]:
+                    - generic [ref=e2678]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2679] [cursor=pointer]
+                  - generic [ref=e2681]:
+                    - generic [ref=e2682]
+                    - checkbox "Is Literal?" [ref=e2687] [cursor=pointer]
+                - generic [ref=e2688]:
+                  - button "Update" [ref=e2689] [cursor=pointer]
+                  - button "Lock" [ref=e2690] [cursor=pointer]
+                  - button "Delete" [ref=e2692] [cursor=pointer]
+            - generic [ref=e2694]:
+              - generic [ref=e2695]:
+                - generic [ref=e2696]:
+                  - textbox [ref=e2698]: DATABASE_URL
+                  - generic [ref=e2701]:
+                    - button "Toggle password visibility" [ref=e2702] [cursor=pointer]
+                    - textbox [ref=e2707]
+                - generic [ref=e2708]:
+                  - generic [ref=e2709]:
+                    - text: Comment
+                    - img [ref=e2712] [cursor=pointer]
+                  - textbox [ref=e2714]
+              - generic [ref=e2715]:
+                - generic [ref=e2716]:
+                  - generic [ref=e2718]:
+                    - generic [ref=e2719]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2724] [cursor=pointer]
+                  - generic [ref=e2726]:
+                    - generic [ref=e2727]
+                    - checkbox "Available at Runtime" [checked] [ref=e2732] [cursor=pointer]
+                  - generic [ref=e2734]:
+                    - generic [ref=e2735]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2736] [cursor=pointer]
+                  - generic [ref=e2738]:
+                    - generic [ref=e2739]
+                    - checkbox "Is Literal?" [ref=e2744] [cursor=pointer]
+                - generic [ref=e2745]:
+                  - button "Update" [ref=e2746] [cursor=pointer]
+                  - button "Lock" [ref=e2747] [cursor=pointer]
+                  - button "Delete" [ref=e2749] [cursor=pointer]
+            - generic [ref=e2751]:
+              - generic [ref=e2752]:
+                - generic [ref=e2753]:
+                  - textbox [ref=e2755]: LOG_LEVEL
+                  - generic [ref=e2758]:
+                    - button "Toggle password visibility" [ref=e2759] [cursor=pointer]
+                    - textbox [ref=e2764]: info
+                - generic [ref=e2765]:
+                  - generic [ref=e2766]:
+                    - text: Comment
+                    - img [ref=e2769] [cursor=pointer]
+                  - textbox [ref=e2771]
+              - generic [ref=e2772]:
+                - generic [ref=e2773]:
+                  - generic [ref=e2775]:
+                    - generic [ref=e2776]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2781] [cursor=pointer]
+                  - generic [ref=e2783]:
+                    - generic [ref=e2784]
+                    - checkbox "Available at Runtime" [checked] [ref=e2789] [cursor=pointer]
+                  - generic [ref=e2791]:
+                    - generic [ref=e2792]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2793] [cursor=pointer]
+                  - generic [ref=e2795]:
+                    - generic [ref=e2796]
+                    - checkbox "Is Literal?" [ref=e2801] [cursor=pointer]
+                - generic [ref=e2802]:
+                  - button "Update" [ref=e2803] [cursor=pointer]
+                  - button "Lock" [ref=e2804] [cursor=pointer]
+                  - button "Delete" [ref=e2806] [cursor=pointer]
+            - generic [ref=e2808]:
+              - generic [ref=e2809]:
+                - generic [ref=e2810]:
+                  - textbox [ref=e2812]: POSTGRES_DB
+                  - generic [ref=e2815]:
+                    - button "Toggle password visibility" [ref=e2816] [cursor=pointer]
+                    - textbox [ref=e2821]: learnenglish
+                - generic [ref=e2822]:
+                  - generic [ref=e2823]:
+                    - text: Comment
+                    - img [ref=e2826] [cursor=pointer]
+                  - textbox [ref=e2828]
+              - generic [ref=e2829]:
+                - generic [ref=e2830]:
+                  - generic [ref=e2832]:
+                    - generic [ref=e2833]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2838] [cursor=pointer]
+                  - generic [ref=e2840]:
+                    - generic [ref=e2841]
+                    - checkbox "Available at Runtime" [checked] [ref=e2846] [cursor=pointer]
+                  - generic [ref=e2848]:
+                    - generic [ref=e2849]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2850] [cursor=pointer]
+                  - generic [ref=e2852]:
+                    - generic [ref=e2853]
+                    - checkbox "Is Literal?" [ref=e2858] [cursor=pointer]
+                - generic [ref=e2859]:
+                  - button "Update" [ref=e2860] [cursor=pointer]
+                  - button "Lock" [ref=e2861] [cursor=pointer]
+                  - button "Delete" [ref=e2863] [cursor=pointer]
+            - generic [ref=e2865]:
+              - generic [ref=e2866]:
+                - generic [ref=e2867]:
+                  - textbox [ref=e2869]: POSTGRES_PASSWORD
+                  - generic [ref=e2872]:
+                    - button "Toggle password visibility" [ref=e2873] [cursor=pointer]
+                    - textbox [ref=e2878]: learnenglish
+                - generic [ref=e2879]:
+                  - generic [ref=e2880]:
+                    - text: Comment
+                    - img [ref=e2883] [cursor=pointer]
+                  - textbox [ref=e2885]
+              - generic [ref=e2886]:
+                - generic [ref=e2887]:
+                  - generic [ref=e2889]:
+                    - generic [ref=e2890]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2895] [cursor=pointer]
+                  - generic [ref=e2897]:
+                    - generic [ref=e2898]
+                    - checkbox "Available at Runtime" [checked] [ref=e2903] [cursor=pointer]
+                  - generic [ref=e2905]:
+                    - generic [ref=e2906]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2907] [cursor=pointer]
+                  - generic [ref=e2909]:
+                    - generic [ref=e2910]
+                    - checkbox "Is Literal?" [ref=e2915] [cursor=pointer]
+                - generic [ref=e2916]:
+                  - button "Update" [ref=e2917] [cursor=pointer]
+                  - button "Lock" [ref=e2918] [cursor=pointer]
+                  - button "Delete" [ref=e2920] [cursor=pointer]
+            - generic [ref=e2922]:
+              - generic [ref=e2923]:
+                - generic [ref=e2924]:
+                  - textbox [ref=e2926]: POSTGRES_USER
+                  - generic [ref=e2929]:
+                    - button "Toggle password visibility" [ref=e2930] [cursor=pointer]
+                    - textbox [ref=e2935]: learnenglish
+                - generic [ref=e2936]:
+                  - generic [ref=e2937]:
+                    - text: Comment
+                    - img [ref=e2940] [cursor=pointer]
+                  - textbox [ref=e2942]
+              - generic [ref=e2943]:
+                - generic [ref=e2944]:
+                  - generic [ref=e2946]:
+                    - generic [ref=e2947]
+                    - checkbox "Available at Buildtime" [checked] [ref=e2952] [cursor=pointer]
+                  - generic [ref=e2954]:
+                    - generic [ref=e2955]
+                    - checkbox "Available at Runtime" [checked] [ref=e2960] [cursor=pointer]
+                  - generic [ref=e2962]:
+                    - generic [ref=e2963]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e2964] [cursor=pointer]
+                  - generic [ref=e2966]:
+                    - generic [ref=e2967]
+                    - checkbox "Is Literal?" [ref=e2972] [cursor=pointer]
+                - generic [ref=e2973]:
+                  - button "Update" [ref=e2974] [cursor=pointer]
+                  - button "Lock" [ref=e2975] [cursor=pointer]
+                  - button "Delete" [ref=e2977] [cursor=pointer]
+            - generic [ref=e2979]:
+              - generic [ref=e2980]:
+                - generic [ref=e2981]:
+                  - textbox [ref=e2983]: STORAGE_ACCESS_KEY
+                  - generic [ref=e2986]:
+                    - button "Toggle password visibility" [ref=e2987] [cursor=pointer]
+                    - textbox [ref=e2992]
+                - generic [ref=e2993]:
+                  - generic [ref=e2994]:
+                    - text: Comment
+                    - img [ref=e2997] [cursor=pointer]
+                  - textbox [ref=e2999]
+              - generic [ref=e3000]:
+                - generic [ref=e3001]:
+                  - generic [ref=e3003]:
+                    - generic [ref=e3004]
+                    - checkbox "Available at Buildtime" [checked] [ref=e3009] [cursor=pointer]
+                  - generic [ref=e3011]:
+                    - generic [ref=e3012]
+                    - checkbox "Available at Runtime" [checked] [ref=e3017] [cursor=pointer]
+                  - generic [ref=e3019]:
+                    - generic [ref=e3020]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e3021] [cursor=pointer]
+                  - generic [ref=e3023]:
+                    - generic [ref=e3024]
+                    - checkbox "Is Literal?" [ref=e3029] [cursor=pointer]
+                - generic [ref=e3030]:
+                  - button "Update" [ref=e3031] [cursor=pointer]
+                  - button "Lock" [ref=e3032] [cursor=pointer]
+                  - button "Delete" [ref=e3034] [cursor=pointer]
+            - generic [ref=e3036]:
+              - generic [ref=e3037]:
+                - generic [ref=e3038]:
+                  - textbox [ref=e3040]: STORAGE_BUCKET
+                  - generic [ref=e3043]:
+                    - button "Toggle password visibility" [ref=e3044] [cursor=pointer]
+                    - textbox [ref=e3049]
+                - generic [ref=e3050]:
+                  - generic [ref=e3051]:
+                    - text: Comment
+                    - img [ref=e3054] [cursor=pointer]
+                  - textbox [ref=e3056]
+              - generic [ref=e3057]:
+                - generic [ref=e3058]:
+                  - generic [ref=e3060]:
+                    - generic [ref=e3061]
+                    - checkbox "Available at Buildtime" [checked] [ref=e3066] [cursor=pointer]
+                  - generic [ref=e3068]:
+                    - generic [ref=e3069]
+                    - checkbox "Available at Runtime" [checked] [ref=e3074] [cursor=pointer]
+                  - generic [ref=e3076]:
+                    - generic [ref=e3077]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e3078] [cursor=pointer]
+                  - generic [ref=e3080]:
+                    - generic [ref=e3081]
+                    - checkbox "Is Literal?" [ref=e3086] [cursor=pointer]
+                - generic [ref=e3087]:
+                  - button "Update" [ref=e3088] [cursor=pointer]
+                  - button "Lock" [ref=e3089] [cursor=pointer]
+                  - button "Delete" [ref=e3091] [cursor=pointer]
+            - generic [ref=e3093]:
+              - generic [ref=e3094]:
+                - generic [ref=e3095]:
+                  - textbox [ref=e3097]: STORAGE_ENDPOINT
+                  - generic [ref=e3100]:
+                    - button "Toggle password visibility" [ref=e3101] [cursor=pointer]
+                    - textbox [ref=e3106]
+                - generic [ref=e3107]:
+                  - generic [ref=e3108]:
+                    - text: Comment
+                    - img [ref=e3111] [cursor=pointer]
+                  - textbox [ref=e3113]
+              - generic [ref=e3114]:
+                - generic [ref=e3115]:
+                  - generic [ref=e3117]:
+                    - generic [ref=e3118]
+                    - checkbox "Available at Buildtime" [checked] [ref=e3123] [cursor=pointer]
+                  - generic [ref=e3125]:
+                    - generic [ref=e3126]
+                    - checkbox "Available at Runtime" [checked] [ref=e3131] [cursor=pointer]
+                  - generic [ref=e3133]:
+                    - generic [ref=e3134]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e3135] [cursor=pointer]
+                  - generic [ref=e3137]:
+                    - generic [ref=e3138]
+                    - checkbox "Is Literal?" [ref=e3143] [cursor=pointer]
+                - generic [ref=e3144]:
+                  - button "Update" [ref=e3145] [cursor=pointer]
+                  - button "Lock" [ref=e3146] [cursor=pointer]
+                  - button "Delete" [ref=e3148] [cursor=pointer]
+            - generic [ref=e3150]:
+              - generic [ref=e3151]:
+                - generic [ref=e3152]:
+                  - textbox [ref=e3154]: STORAGE_PUBLIC_URL
+                  - generic [ref=e3157]:
+                    - button "Toggle password visibility" [ref=e3158] [cursor=pointer]
+                    - textbox [ref=e3163]
+                - generic [ref=e3164]:
+                  - generic [ref=e3165]:
+                    - text: Comment
+                    - img [ref=e3168] [cursor=pointer]
+                  - textbox [ref=e3170]
+              - generic [ref=e3171]:
+                - generic [ref=e3172]:
+                  - generic [ref=e3174]:
+                    - generic [ref=e3175]
+                    - checkbox "Available at Buildtime" [checked] [ref=e3180] [cursor=pointer]
+                  - generic [ref=e3182]:
+                    - generic [ref=e3183]
+                    - checkbox "Available at Runtime" [checked] [ref=e3188] [cursor=pointer]
+                  - generic [ref=e3190]:
+                    - generic [ref=e3191]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e3192] [cursor=pointer]
+                  - generic [ref=e3194]:
+                    - generic [ref=e3195]
+                    - checkbox "Is Literal?" [ref=e3200] [cursor=pointer]
+                - generic [ref=e3201]:
+                  - button "Update" [ref=e3202] [cursor=pointer]
+                  - button "Lock" [ref=e3203] [cursor=pointer]
+                  - button "Delete" [ref=e3205] [cursor=pointer]
+            - generic [ref=e3207]:
+              - generic [ref=e3208]:
+                - generic [ref=e3209]:
+                  - textbox [ref=e3211]: STORAGE_SECRET_KEY
+                  - generic [ref=e3214]:
+                    - button "Toggle password visibility" [ref=e3215] [cursor=pointer]
+                    - textbox [ref=e3220]
+                - generic [ref=e3221]:
+                  - generic [ref=e3222]:
+                    - text: Comment
+                    - img [ref=e3225] [cursor=pointer]
+                  - textbox [ref=e3227]
+              - generic [ref=e3228]:
+                - generic [ref=e3229]:
+                  - generic [ref=e3231]:
+                    - generic [ref=e3232]
+                    - checkbox "Available at Buildtime" [checked] [ref=e3237] [cursor=pointer]
+                  - generic [ref=e3239]:
+                    - generic [ref=e3240]
+                    - checkbox "Available at Runtime" [checked] [ref=e3245] [cursor=pointer]
+                  - generic [ref=e3247]:
+                    - generic [ref=e3248]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e3249] [cursor=pointer]
+                  - generic [ref=e3251]:
+                    - generic [ref=e3252]
+                    - checkbox "Is Literal?" [ref=e3257] [cursor=pointer]
+                - generic [ref=e3258]:
+                  - button "Update" [ref=e3259] [cursor=pointer]
+                  - button "Lock" [ref=e3260] [cursor=pointer]
+                  - button "Delete" [ref=e3262] [cursor=pointer]
+            - generic [ref=e3264]:
+              - generic [ref=e3265]:
+                - generic [ref=e3266]:
+                  - textbox [ref=e3268]: TTS_URL
+                  - generic [ref=e3271]:
+                    - button "Toggle password visibility" [ref=e3272] [cursor=pointer]
+                    - textbox [ref=e3277]
+                - generic [ref=e3278]:
+                  - generic [ref=e3279]:
+                    - text: Comment
+                    - img [ref=e3282] [cursor=pointer]
+                  - textbox [ref=e3284]
+              - generic [ref=e3285]:
+                - generic [ref=e3286]:
+                  - generic [ref=e3288]:
+                    - generic [ref=e3289]
+                    - checkbox "Available at Buildtime" [checked] [ref=e3294] [cursor=pointer]
+                  - generic [ref=e3296]:
+                    - generic [ref=e3297]
+                    - checkbox "Available at Runtime" [checked] [ref=e3302] [cursor=pointer]
+                  - generic [ref=e3304]:
+                    - generic [ref=e3305]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=e3306] [cursor=pointer]
+                  - generic [ref=e3308]:
+                    - generic [ref=e3309]
+                    - checkbox "Is Literal?" [ref=e3314] [cursor=pointer]
+                - generic [ref=e3315]:
+                  - button "Update" [ref=e3316] [cursor=pointer]
+                  - button "Lock" [ref=e3317] [cursor=pointer]
+                  - button "Delete" [ref=e3319] [cursor=pointer]
+            - generic [ref=e3321]:
+              - generic [ref=e3322]:
+                - generic [ref=e3323]: Hardcoded env
+                - generic [ref=e3324]: "Service: storage"
+              - generic [ref=e3326]:
+                - textbox [disabled] [ref=e3328]: MINIO_ROOT_USER
+                - generic [ref=e3330]:
+                  - button "Toggle password visibility" [ref=e3331] [cursor=pointer]:
+                    - img [ref=e3332]
+                  - textbox [disabled] [ref=e3336]: "${STORAGE_ACCESS_KEY}"
+            - generic [ref=e3338]:
+              - generic [ref=e3339]:
+                - generic [ref=e3340]: Hardcoded env
+                - generic [ref=e3341]: "Service: storage"
+              - generic [ref=e3343]:
+                - textbox [disabled] [ref=e3345]: MINIO_ROOT_PASSWORD
+                - generic [ref=e3347]:
+                  - button "Toggle password visibility" [ref=e3348] [cursor=pointer]:
+                    - img [ref=e3349]
+                  - textbox [disabled] [ref=e3353]: "${STORAGE_SECRET_KEY}"
+  - img
+  - list

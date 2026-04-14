@@ -21,6 +21,9 @@ services:
       LOG_LEVEL: ${LOG_LEVEL:-info}
     expose:
       - "3000"
+    networks:
+      - default
+      - coolify
     depends_on:
       db:
         condition: service_healthy
@@ -92,6 +95,11 @@ services:
       db:
         condition: service_healthy
     restart: "no"
+
+networks:
+  default:
+  coolify:
+    external: true
 
 volumes:
   db-data:

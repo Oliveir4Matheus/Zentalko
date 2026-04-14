@@ -1,0 +1,423 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - link "Coolify" [ref=e8] [cursor=pointer]:
+            - /url: /
+          - link "v4.0.0-beta.471" [ref=e9] [cursor=pointer]:
+            - /url: https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471
+        - button / [ref=e11]:
+          - img [ref=e12]
+          - generic [ref=e14]: /
+        - button "Preferences 9+" [ref=e17] [cursor=pointer]:
+          - img "Preferences" [ref=e18]
+          - generic [ref=e20]: 9+
+      - combobox [ref=e23]:
+        - option "Switch team" [disabled]
+        - option "Root Team" [selected]
+      - list [ref=e24]:
+        - listitem [ref=e25]:
+          - list [ref=e26]:
+            - listitem [ref=e27]:
+              - link "Dashboard" [ref=e28] [cursor=pointer]:
+                - /url: /
+                - img [ref=e29]
+                - generic [ref=e31]: Dashboard
+            - listitem [ref=e32]:
+              - link "Projects" [ref=e33] [cursor=pointer]:
+                - /url: /projects
+                - img [ref=e34]
+                - generic [ref=e39]: Projects
+            - listitem [ref=e40]:
+              - link "Servers" [ref=e41] [cursor=pointer]:
+                - /url: /servers
+                - img [ref=e42]
+                - generic [ref=e47]: Servers
+            - listitem [ref=e48]:
+              - link "Sources" [ref=e49] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/sources
+                - img [ref=e50]
+                - generic [ref=e52]: Sources
+            - listitem [ref=e53]:
+              - link "Destinations" [ref=e54] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/destinations
+                - img [ref=e55]
+                - generic [ref=e57]: Destinations
+            - listitem [ref=e58]:
+              - link "S3 Storages" [ref=e59] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/storages
+                - img [ref=e60]
+                - generic [ref=e65]: S3 Storages
+            - listitem [ref=e66]:
+              - link "Shared Variables" [ref=e67] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/shared-variables
+                - img [ref=e68]
+                - generic [ref=e72]: Shared Variables
+            - listitem [ref=e73]:
+              - link "Notifications" [ref=e74] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/notifications/email
+                - img [ref=e75]
+                - generic [ref=e77]: Notifications
+            - listitem [ref=e78]:
+              - link "Keys & Tokens" [ref=e79] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/security/private-key
+                - img [ref=e80]
+                - generic [ref=e82]: Keys & Tokens
+            - listitem [ref=e83]:
+              - link "Tags" [ref=e84] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/tags
+                - img [ref=e85]
+                - generic [ref=e89]: Tags
+            - listitem [ref=e90]:
+              - link "Terminal" [ref=e91] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/terminal
+                - img [ref=e92]
+                - generic [ref=e95]: Terminal
+            - listitem [ref=e96]:
+              - link "Profile" [ref=e97] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/profile
+                - img [ref=e98]
+                - generic [ref=e103]: Profile
+            - listitem [ref=e104]:
+              - link "Teams" [ref=e105] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/team
+                - img [ref=e106]
+                - generic [ref=e114]: Teams
+            - listitem [ref=e115]:
+              - link "Settings" [ref=e116] [cursor=pointer]:
+                - /url: /settings
+                - img [ref=e117]
+                - generic [ref=e121]: Settings
+            - listitem [ref=e401]:
+              - generic "New version available" [ref=e402]:
+                - button "Upgrade" [ref=e404] [cursor=pointer]:
+                  - img [ref=e405]
+                  - text: Upgrade
+            - listitem [ref=e123]:
+              - link "Sponsor us" [ref=e124] [cursor=pointer]:
+                - /url: https://coolify.io/sponsorships
+                - img [ref=e125]
+                - generic [ref=e129]: Sponsor us
+            - listitem [ref=e130]:
+              - generic "Send us feedback or get help!" [ref=e133] [cursor=pointer]:
+                - img [ref=e134]
+                - generic [ref=e136]: Feedback
+            - listitem [ref=e137]:
+              - button "Logout" [ref=e139]:
+                - img [ref=e140]
+                - generic [ref=e142]: Logout
+    - main [ref=e143]:
+      - generic [ref=e145]:
+        - heading "Configuration" [level=1] [ref=e146]
+        - navigation [ref=e147]:
+          - navigation [ref=e148]:
+            - list [ref=e149]:
+              - listitem [ref=e150]:
+                - generic [ref=e151]:
+                  - link "Swissport Applications" [ref=e152] [cursor=pointer]:
+                    - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n
+                  - button [ref=e153]:
+                    - img [ref=e154]
+              - listitem [ref=e156]:
+                - generic [ref=e157]:
+                  - link "production" [ref=e158] [cursor=pointer]:
+                    - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm
+                  - button [ref=e159]:
+                    - img [ref=e160]
+              - listitem [ref=e162]:
+                - link "zentalko (localhost)" [ref=e163] [cursor=pointer]:
+                  - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl
+              - generic [ref=e165]:
+                - link "Running" [ref=e168] [cursor=pointer]:
+                  - /url: https://github.com/Oliveir4Matheus/Zentalko/commit/e04a80f6d5cf1367c39706a24815c7ccb6caa512
+                - generic [ref=e169]: (healthy)
+              - button "Refresh Status" [ref=e170]:
+                - img [ref=e171]
+          - generic [ref=e173]:
+            - navigation [ref=e174]:
+              - link "Configuration" [ref=e175] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl
+              - link "Deployments" [ref=e176] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/deployment
+              - link "Logs" [ref=e177] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/logs
+                - generic [ref=e178]: Logs
+              - link "Terminal" [ref=e179] [cursor=pointer]:
+                - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/terminal
+              - button "Links" [ref=e181]:
+                - generic [ref=e182]: Links
+                - img [ref=e183]
+            - generic [ref=e185]:
+              - button "Advanced" [ref=e188]:
+                - generic [ref=e189]: Advanced
+                - img [ref=e190]
+              - generic [ref=e192]:
+                - button "Redeploy" [ref=e193] [cursor=pointer]:
+                  - img [ref=e194]
+                  - text: Redeploy
+                - button "Stop" [ref=e197] [cursor=pointer]:
+                  - img [ref=e198]
+                  - text: Stop
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - link "General" [ref=e202] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl
+              - generic [ref=e203]: General
+            - link "Advanced" [ref=e204] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/advanced
+              - generic [ref=e205]: Advanced
+            - link "Environment Variables" [ref=e206] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/environment-variables
+              - generic [ref=e207]: Environment Variables
+            - link "Persistent Storage" [ref=e208] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/persistent-storage
+              - generic [ref=e209]: Persistent Storage
+            - link "Git Source" [ref=e210] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/source
+              - generic [ref=e211]: Git Source
+            - link "Servers" [ref=e212] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/servers
+              - generic [ref=e213]: Servers
+            - link "Scheduled Tasks" [ref=e214] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/scheduled-tasks
+              - generic [ref=e215]: Scheduled Tasks
+            - link "Webhooks" [ref=e216] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/webhooks
+              - generic [ref=e217]: Webhooks
+            - link "Preview Deployments" [ref=e218] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/preview-deployments
+              - generic [ref=e219]: Preview Deployments
+            - link "Rollback" [ref=e220] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/rollback
+              - generic [ref=e221]: Rollback
+            - link "Resource Limits" [ref=e222] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/resource-limits
+              - generic [ref=e223]: Resource Limits
+            - link "Resource Operations" [ref=e224] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/resource-operations
+              - generic [ref=e225]: Resource Operations
+            - link "Metrics" [ref=e226] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/metrics
+              - generic [ref=e227]: Metrics
+            - link "Tags" [ref=e228] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/tags
+              - generic [ref=e229]: Tags
+            - link "Danger Zone" [ref=e230] [cursor=pointer]:
+              - /url: https://coolify-local.dartenmind.com.br/project/ztkgebzpunvym2l821oaop9n/environment/c14lm6002m30lqv6ucb1hqdm/application/m10wcf7ws3folhneqaxzwjnl/danger
+              - generic [ref=e231]: Danger Zone
+          - generic [ref=e234]:
+            - generic [ref=e235]:
+              - heading "General" [level=2] [ref=e236]
+              - button "Save" [ref=e237] [cursor=pointer]
+              - button "Reload Compose File" [ref=e238] [cursor=pointer]
+            - generic [ref=e239]: General configuration for your application.
+            - generic [ref=e240]:
+              - generic [ref=e241]:
+                - generic [ref=e242]:
+                  - generic [ref=e243]:
+                    - text: Name
+                    - generic [ref=e244]: "*"
+                  - textbox [ref=e408]: zentalko
+                - generic [ref=e246]:
+                  - generic [ref=e247]: Description
+                  - textbox [ref=e409]
+              - generic [ref=e249]:
+                - generic [ref=e251]:
+                  - generic [ref=e252]:
+                    - text: Build Pack
+                    - generic [ref=e253]: "*"
+                  - combobox [ref=e410]:
+                    - option "Nixpacks"
+                    - option "Static"
+                    - option "Dockerfile"
+                    - option "Docker Compose" [selected]
+                - heading "Domains" [level=3] [ref=e255]
+                - generic [ref=e256]:
+                  - generic [ref=e257]:
+                    - generic [ref=e258]:
+                      - text: Domains for web
+                      - img [ref=e261] [cursor=pointer]
+                    - textbox [ref=e411]: https://zentalko.dartenmind.com.br
+                  - button "Generate Domain" [ref=e264] [cursor=pointer]
+                - generic [ref=e265]:
+                  - generic [ref=e266]:
+                    - generic [ref=e267]:
+                      - text: Domains for storage
+                      - img [ref=e270] [cursor=pointer]
+                    - textbox [ref=e412]
+                  - button "Generate Domain" [ref=e273] [cursor=pointer]
+                - generic [ref=e274]:
+                  - generic [ref=e275]:
+                    - generic [ref=e276]:
+                      - text: Domains for tts
+                      - img [ref=e279] [cursor=pointer]
+                    - textbox [ref=e413]
+                  - button "Generate Domain" [ref=e282] [cursor=pointer]
+                - generic [ref=e283]:
+                  - generic [ref=e284]:
+                    - generic [ref=e285]:
+                      - text: Domains for migrations
+                      - img [ref=e288] [cursor=pointer]
+                    - textbox [ref=e414]
+                  - button "Generate Domain" [ref=e291] [cursor=pointer]
+              - generic [ref=e292]:
+                - heading "Build" [level=3] [ref=e293]
+                - generic [ref=e295]:
+                  - generic [ref=e296]:
+                    - generic [ref=e297]:
+                      - generic [ref=e298]:
+                        - text: Base Directory
+                        - img [ref=e301] [cursor=pointer]
+                      - textbox / [ref=e415]
+                    - generic [ref=e304]:
+                      - generic [ref=e305]:
+                        - text: Docker Compose Location
+                        - img [ref=e308] [cursor=pointer]
+                      - textbox "/docker-compose.yaml" [ref=e416]: /docker-compose.yml
+                  - generic [ref=e313]:
+                    - generic [ref=e314]:
+                      - text: Preserve Repository During Deployment
+                      - img [ref=e317] [cursor=pointer]
+                    - checkbox "Preserve Repository During Deployment" [ref=e417] [cursor=pointer]
+                  - generic [ref=e320]: The following commands are for advanced use cases. Only modify them if you know what are you doing.
+                  - generic [ref=e321]:
+                    - generic [ref=e322]:
+                      - generic [ref=e323]:
+                        - text: Custom Build Command
+                        - img [ref=e326] [cursor=pointer]
+                      - textbox "docker compose build" [ref=e418]
+                    - generic [ref=e329]:
+                      - generic [ref=e330]:
+                        - text: Custom Start Command
+                        - img [ref=e333] [cursor=pointer]
+                      - textbox "docker compose up -d" [ref=e419]
+                  - generic [ref=e337]:
+                    - generic [ref=e338]:
+                      - text: Watch Paths
+                      - img [ref=e341] [cursor=pointer]
+                    - textbox "services/api/**" [ref=e420]
+              - generic [ref=e344]:
+                - generic [ref=e345]:
+                  - heading "Docker Compose" [level=3] [ref=e346]
+                  - button "Show Deployable Compose" [ref=e347] [cursor=pointer]
+                - generic [ref=e349]:
+                  - generic [ref=e350]:
+                    - text: Docker Compose Content (raw)
+                    - img [ref=e353] [cursor=pointer]
+                  - code [ref=e425]:
+                    - generic [ref=e426]:
+                      - generic [ref=e428]:
+                        - generic [ref=e429]:
+                          - generic [ref=e431] [cursor=pointer]: 
+                          - generic [ref=e432]: "1"
+                        - generic [ref=e433]:
+                          - generic [ref=e434] [cursor=pointer]: 
+                          - generic [ref=e435]: "2"
+                        - generic [ref=e436]:
+                          - generic [ref=e437] [cursor=pointer]: 
+                          - generic [ref=e438]: "3"
+                        - generic [ref=e440]: "4"
+                        - generic [ref=e442]: "5"
+                        - generic [ref=e443]:
+                          - generic [ref=e444] [cursor=pointer]: 
+                          - generic [ref=e445]: "6"
+                        - generic [ref=e447]: "7"
+                        - generic [ref=e449]: "8"
+                        - generic [ref=e451]: "9"
+                        - generic [ref=e453]: "10"
+                        - generic [ref=e455]: "11"
+                        - generic [ref=e457]: "12"
+                        - generic [ref=e459]: "13"
+                        - generic [ref=e461]: "14"
+                        - generic [ref=e463]: "15"
+                        - generic [ref=e465]: "16"
+                        - generic [ref=e467]: "17"
+                        - generic [ref=e469]: "18"
+                        - generic [ref=e471]: "19"
+                        - generic [ref=e472]:
+                          - generic [ref=e473] [cursor=pointer]: 
+                          - generic [ref=e474]: "20"
+                        - generic [ref=e476]: "21"
+                        - generic [ref=e477]:
+                          - generic [ref=e478] [cursor=pointer]: 
+                          - generic [ref=e479]: "22"
+                        - generic [ref=e480]:
+                          - generic [ref=e481] [cursor=pointer]: 
+                          - generic [ref=e482]: "23"
+                        - generic [ref=e484]: "24"
+                        - generic [ref=e485]:
+                          - generic [ref=e486] [cursor=pointer]: 
+                          - generic [ref=e487]: "25"
+                        - generic [ref=e489]: "26"
+                        - generic [ref=e490]:
+                          - generic [ref=e491] [cursor=pointer]: 
+                          - generic [ref=e492]: "27"
+                        - generic [ref=e494]: "28"
+                        - generic [ref=e495]:
+                          - generic [ref=e496] [cursor=pointer]: 
+                          - generic [ref=e497]: "29"
+                      - generic [ref=e610]:
+                        - generic [ref=e612]: "services:"
+                        - generic [ref=e614]: "web:"
+                        - generic [ref=e616]: "build:"
+                        - generic [ref=e618]: "context: ."
+                        - generic [ref=e620]: "dockerfile: Dockerfile.web"
+                        - generic [ref=e622]: "environment:"
+                        - generic [ref=e624]: "DATABASE_URL: '${DATABASE_URL}'"
+                        - generic [ref=e626]: "AUTH_SECRET: '${AUTH_SECRET}'"
+                        - generic [ref=e628]: "AUTH_URL: '${AUTH_URL}'"
+                        - generic [ref=e630]: "AUTH_GOOGLE_ID: '${AUTH_GOOGLE_ID}'"
+                        - generic [ref=e632]: "AUTH_GOOGLE_SECRET: '${AUTH_GOOGLE_SECRET}'"
+                        - generic [ref=e634]: "BYOK_ENCRYPTION_KEY: '${BYOK_ENCRYPTION_KEY}'"
+                        - generic [ref=e636]: "STORAGE_ENDPOINT: '${STORAGE_ENDPOINT}'"
+                        - generic [ref=e638]: "STORAGE_ACCESS_KEY: '${STORAGE_ACCESS_KEY}'"
+                        - generic [ref=e640]: "STORAGE_SECRET_KEY: '${STORAGE_SECRET_KEY}'"
+                        - generic [ref=e642]: "STORAGE_BUCKET: '${STORAGE_BUCKET}'"
+                        - generic [ref=e644]: "STORAGE_PUBLIC_URL: '${STORAGE_PUBLIC_URL}'"
+                        - generic [ref=e646]: "TTS_URL: '${TTS_URL}'"
+                        - generic [ref=e648]: "LOG_LEVEL: '${LOG_LEVEL:-info}'"
+                        - generic [ref=e650]: "expose:"
+                        - generic [ref=e652]: "- '3000'"
+                        - generic [ref=e654]: "depends_on:"
+                        - generic [ref=e656]: "db:"
+                        - generic [ref=e658]: "condition: service_healthy"
+                        - generic [ref=e660]: "storage:"
+                        - generic [ref=e662]: "condition: service_healthy"
+                        - generic [ref=e664]: "tts:"
+                        - generic [ref=e666]: "condition: service_healthy"
+                        - generic [ref=e668]: "migrations:"
+                      - textbox "Editor content" [ref=e670]
+                - generic [ref=e362]:
+                  - generic [ref=e363]:
+                    - text: Escape special characters in labels?
+                    - img [ref=e366] [cursor=pointer]
+                  - checkbox "Escape special characters in labels?" [checked] [ref=e671] [cursor=pointer]
+              - heading "Pre/Post Deployment Commands" [level=3] [ref=e369]
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - generic [ref=e372]:
+                    - text: Pre-deployment
+                    - img [ref=e375] [cursor=pointer]
+                  - textbox "php artisan migrate" [ref=e672]
+                - generic [ref=e378]:
+                  - generic [ref=e379]:
+                    - text: Container Name
+                    - img [ref=e382] [cursor=pointer]
+                  - textbox [ref=e673]
+              - generic [ref=e385]:
+                - generic [ref=e386]:
+                  - generic [ref=e387]:
+                    - text: Post-deployment
+                    - img [ref=e390] [cursor=pointer]
+                  - textbox "php artisan migrate" [ref=e674]
+                - generic [ref=e393]:
+                  - generic [ref=e394]:
+                    - text: Container Name
+                    - img [ref=e397] [cursor=pointer]
+                  - textbox [ref=e675]
+  - img
+  - list
+  - generic [ref=e676]:
+    - alert
+    - alert

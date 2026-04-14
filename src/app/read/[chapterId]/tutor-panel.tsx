@@ -18,13 +18,17 @@ export function TutorPanel({
   getPageText,
   selection,
   onClearSelection,
+  open,
+  onOpenChange,
 }: {
   chapterId: string;
   getPageText: () => string;
   selection: string | null;
   onClearSelection: () => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }) {
-  const [open, setOpen] = useState(false);
+  const setOpen = onOpenChange;
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -67,7 +71,7 @@ export function TutorPanel({
     <>
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => setOpen(!open)}
         aria-label="Abrir tutor"
         className="rounded-full border border-[color:var(--paper-border,#e6dcc6)] bg-white/60 p-2 text-[color:var(--ink,#2a2218)] transition hover:bg-white"
       >

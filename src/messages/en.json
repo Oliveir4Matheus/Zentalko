@@ -99,6 +99,14 @@
     "keysReplacePlaceholder": "Paste new key to update",
     "meta": "Goal",
     "dataTitle": "My data",
-    "apiKeysTitle": "API keys"
+    "apiKeysTitle": "API keys",
+    "model": "Model",
+    "modelDefault": "(default)",
+    "test": "Test",
+    "testing": "Testing…",
+    "testOk": "Key works",
+    "testFail": "Failed",
+    "setDefault": "Make default",
+    "defaultProvider": "Default"
   }
 }

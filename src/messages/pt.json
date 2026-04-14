@@ -99,6 +99,14 @@
     "keysReplacePlaceholder": "Cole nova chave para atualizar",
     "meta": "Meta",
     "dataTitle": "Meus dados",
-    "apiKeysTitle": "Chaves de API"
+    "apiKeysTitle": "Chaves de API",
+    "model": "Modelo",
+    "modelDefault": "(padrão)",
+    "test": "Testar",
+    "testing": "Testando…",
+    "testOk": "Chave válida",
+    "testFail": "Falhou",
+    "setDefault": "Definir como padrão",
+    "defaultProvider": "Padrão"
   }
 }

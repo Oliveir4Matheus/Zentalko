@@ -366,6 +366,20 @@ export function Reader({
   // Latest text selection, kept around after the toolbar disappears so the
   // tutor panel can still quote it as context until the user clears it.
   const [tutorSelection, setTutorSelection] = useState<string | null>(null);
+  const [tutorOpen, setTutorOpen] = useState(false);
+  // Below sm breakpoint (~640px) the tutor covers the whole screen, so the
+  // reader should not also reserve space for it.
+  const [isNarrow, setIsNarrow] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(max-width: 639px)');
+    const update = () => setIsNarrow(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  const TUTOR_WIDTH = 380;
+  const effectiveTutorPad = tutorOpen && !isNarrow ? TUTOR_WIDTH : 0;
   const sessionStarted = useRef(false);
 
   // Client-side translation cache + pending-promise dedupe
@@ -636,7 +650,10 @@ export function Reader({
   );
 
   return (
-    <div className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-[color:var(--paper,#f7efdf)]">
+    <div
+      className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-[color:var(--paper,#f7efdf)] transition-[padding] duration-200"
+      style={{ paddingRight: effectiveTutorPad }}
+    >
       {/* Immersive bar */}
       <div className="sticky top-0 z-10 border-b border-[color:var(--paper-border,#e6dcc6)] bg-[color:var(--paper,#f7efdf)]/90 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
@@ -668,6 +685,8 @@ export function Reader({
               getPageText={getPageText}
               selection={tutorSelection}
               onClearSelection={() => setTutorSelection(null)}
+              open={tutorOpen}
+              onOpenChange={setTutorOpen}
             />
           </div>
         </div>
@@ -728,6 +747,7 @@ export function Reader({
           else if (nextChapterId) router.push(`/read/${nextChapterId}` as `/read/${string}`);
         }}
         label={pageIdx < totalPages - 1 ? 'Next page' : 'Next chapter'}
+        offsetRight={effectiveTutorPad}
       />
 
       {/* Bottom bar: progress + page indicator + end session */}
@@ -1039,12 +1059,16 @@ function SideArrow({
   disabled,
   onClick,
   label,
+  offsetRight = 0,
 }: {
   side: 'left' | 'right';
   disabled: boolean;
   onClick: () => void;
   label: string;
+  offsetRight?: number;
 }) {
+  const style =
+    side === 'right' && offsetRight > 0 ? { right: offsetRight + 16 } : undefined;
   return (
     <button
       type="button"
@@ -1052,8 +1076,9 @@ function SideArrow({
       title={label}
       disabled={disabled}
       onClick={onClick}
+      style={style}
       className={`fixed top-1/2 z-30 hidden -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--paper-border,#e6dcc6)] bg-white/70 text-[color:var(--ink-muted,#6b5f4a)] backdrop-blur transition hover:bg-white hover:text-[color:var(--ink,#2a2218)] hover:shadow-[0_8px_30px_-12px_rgba(20,15,10,0.25)] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-white/70 sm:flex h-12 w-12 ${
-        side === 'left' ? 'left-4 sm:left-6' : 'right-4 sm:right-6'
+        side === 'left' ? 'left-4 sm:left-6' : style ? '' : 'right-4 sm:right-6'
       }`}
     >
       {side === 'left' ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}

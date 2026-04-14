@@ -21,6 +21,11 @@ services:
       LOG_LEVEL: ${LOG_LEVEL:-info}
     expose:
       - "3000"
+    # Tell Coolify's Traefik which internal port to hit. Needed because we
+    # use `expose` instead of a host `ports` mapping (multi-stack safe).
+    labels:
+      - traefik.http.services.http-0-${COOLIFY_RESOURCE_UUID:-zentalko}-web.loadbalancer.server.port=3000
+      - traefik.http.services.https-0-${COOLIFY_RESOURCE_UUID:-zentalko}-web.loadbalancer.server.port=3000
     networks:
       - default
       - coolify

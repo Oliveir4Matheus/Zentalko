@@ -23,6 +23,11 @@ export default function ReaderPerfPreview() {
       totalChapters={1}
       prevChapterId={null}
       nextChapterId={null}
+      chapterWordCount={5000}
+      totalBookWords={5000}
+      otherBookWordsRead={0}
+      initialPageIdx={0}
+      initialBookPercent={0}
     />
   );
 }

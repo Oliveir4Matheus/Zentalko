@@ -233,18 +233,26 @@ export const readingRouter = router({
     }),
 
   addWordAsFlashcard: protectedProcedure
-    .input(z.object({ word: z.string().min(1).max(100), context: z.string().max(2000) }))
+    .input(
+      z.object({
+        word: z.string().min(1).max(100),
+        context: z.string().max(2000),
+        translation: z.string().max(500).optional(),
+      }),
+    )
     .mutation(async ({ ctx, input }) => {
       const now = new Date();
       const initial = initCard({ createdAt: now });
       // Put reading-added cards at the front of the due queue: users expect
       // the word they just saved from a reading session to surface first.
       const dueAt = new Date(now.getTime() - 60_000);
+      const translation = input.translation?.trim();
       const card = await ctx.prisma.flashcard.create({
         data: {
           userId: ctx.userId,
           front: input.word,
-          back: input.context,
+          back: translation && translation.length > 0 ? translation : input.context,
+          cloze: input.context || null,
           direction: 'EN_TO_PT',
           state: initial.state,
           dueAt,
@@ -258,6 +266,64 @@ export const readingRouter = router({
         update: { level: 'Learning' },
       });
       return card;
+    }),
+
+  addPhraseAsFlashcard: protectedProcedure
+    .input(
+      z.object({
+        phrase: z.string().min(1).max(2000),
+        translation: z.string().min(1).max(2000),
+        context: z.string().max(2000).optional(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const now = new Date();
+      const initial = initCard({ createdAt: now });
+      const dueAt = new Date(now.getTime() - 60_000);
+      const card = await ctx.prisma.flashcard.create({
+        data: {
+          userId: ctx.userId,
+          front: input.phrase,
+          back: input.translation,
+          cloze: input.context ?? null,
+          direction: 'EN_TO_PT',
+          state: initial.state,
+          dueAt,
+          fsrsState: initial._fsrs as unknown as object,
+          tags: ['reading', 'phrase'],
+        },
+      });
+      return card;
+    }),
+
+  setProgress: protectedProcedure
+    .input(
+      z.object({
+        chapterId: z.string().min(1),
+        pageIdx: z.number().int().min(0),
+        totalPages: z.number().int().min(1),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      // Defense-in-depth: make sure the chapter belongs to a book owned by the
+      // caller before writing progress for them.
+      const chapter = await ctx.prisma.chapter.findFirst({
+        where: { id: input.chapterId, book: { userId: ctx.userId } },
+        select: { id: true },
+      });
+      if (!chapter) throw new TRPCError({ code: 'NOT_FOUND' });
+      const pageIdx = Math.min(input.pageIdx, input.totalPages - 1);
+      await ctx.prisma.readingProgress.upsert({
+        where: { userId_chapterId: { userId: ctx.userId, chapterId: input.chapterId } },
+        create: {
+          userId: ctx.userId,
+          chapterId: input.chapterId,
+          pageIdx,
+          totalPages: input.totalPages,
+        },
+        update: { pageIdx, totalPages: input.totalPages },
+      });
+      return { ok: true };
     }),
 
   setWordFamiliarity: protectedProcedure

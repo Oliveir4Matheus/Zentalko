@@ -159,6 +159,11 @@ export function Reader({
   totalChapters,
   prevChapterId,
   nextChapterId,
+  chapterWordCount,
+  totalBookWords,
+  otherBookWordsRead,
+  initialPageIdx,
+  initialBookPercent,
 }: {
   chapterId: string;
   bookId: string;
@@ -170,6 +175,11 @@ export function Reader({
   totalChapters: number;
   prevChapterId: string | null;
   nextChapterId: string | null;
+  chapterWordCount: number;
+  totalBookWords: number;
+  otherBookWordsRead: number;
+  initialPageIdx: number;
+  initialBookPercent: number;
 }) {
   const t = useT();
   const router = useRouter();
@@ -187,7 +197,10 @@ export function Reader({
   const pagerRef = useRef<HTMLDivElement>(null);
   const pagesRef = useRef<HTMLDivElement>(null);
   const [pageOffsets, setPageOffsets] = useState<number[]>([0]);
-  const [pageIdx, setPageIdx] = useState(0);
+  const [pageIdx, setPageIdx] = useState(initialPageIdx);
+  // Once true, we've applied the persisted pageIdx after layout measurement.
+  // Prevents overwriting the saved page while pagination recomputes on resize.
+  const restoredRef = useRef(false);
 
   const recomputePages = useCallback(() => {
     const pager = pagerRef.current;
@@ -254,14 +267,33 @@ export function Reader({
     };
   }, [recomputePages]);
 
-  // Reset to first page when chapter changes
+  // Reset when chapter changes — pageIdx is re-seeded from the initialPageIdx
+  // passed by the server (which reads ReadingProgress).
   useEffect(() => {
-    setPageIdx(0);
-  }, [chapterId]);
+    restoredRef.current = false;
+    setPageIdx(initialPageIdx);
+  }, [chapterId, initialPageIdx]);
+
+  // After the first layout pass computes pageOffsets, clamp the restored
+  // pageIdx to the current total (viewport/font may differ from last session).
+  useEffect(() => {
+    if (restoredRef.current) return;
+    if (pageOffsets.length === 0) return;
+    restoredRef.current = true;
+    setPageIdx((n) => Math.min(n, pageOffsets.length - 1));
+  }, [pageOffsets]);
 
   const totalPages = pageOffsets.length;
   const safePageIdx = Math.min(pageIdx, totalPages - 1);
   const translateY = pageOffsets[safePageIdx] ?? 0;
+
+  const chapterPercent = totalPages > 0 ? (safePageIdx + 1) / totalPages : 0;
+  const bookPercent = useMemo(() => {
+    if (totalBookWords <= 0) return initialBookPercent;
+    const current = (chapterWordCount || 1) * chapterPercent;
+    const raw = (otherBookWordsRead + current) / totalBookWords;
+    return Math.max(0, Math.min(1, raw));
+  }, [chapterPercent, chapterWordCount, otherBookWordsRead, totalBookWords, initialBookPercent]);
 
   // Flat word index map, used to render karaoke highlight without touching non-active words
   const flatTokens = useMemo(() => {
@@ -323,6 +355,13 @@ export function Reader({
   const explain = trpc.reading.explainSentence.useMutation();
   const setFam = trpc.reading.setWordFamiliarity.useMutation();
   const addCard = trpc.reading.addWordAsFlashcard.useMutation();
+  const addPhrase = trpc.reading.addPhraseAsFlashcard.useMutation();
+  const saveProgress = trpc.reading.setProgress.useMutation();
+  const [selectionTool, setSelectionTool] = useState<
+    | { text: string; x: number; y: number }
+    | null
+  >(null);
+  const [phraseSaved, setPhraseSaved] = useState<string | null>(null);
   const sessionStarted = useRef(false);
 
   // Client-side translation cache + pending-promise dedupe
@@ -339,6 +378,20 @@ export function Reader({
     startSession.mutate({ chapterId }, { onSuccess: (s) => setSessionId(s.id) });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chapterId, isDemo]);
+
+  // Debounced persistence of current page. Skip demo and skip writes before
+  // pagination has stabilized (restoredRef guards against writing the restored
+  // value back right away).
+  useEffect(() => {
+    if (isDemo) return;
+    if (!restoredRef.current) return;
+    if (totalPages <= 0) return;
+    const t = setTimeout(() => {
+      saveProgress.mutate({ chapterId, pageIdx: safePageIdx, totalPages });
+    }, 600);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chapterId, safePageIdx, totalPages, isDemo]);
 
   const fetchTranslation = useCallback(
     async (word: string, context: string): Promise<TranslationCacheEntry> => {
@@ -426,8 +479,8 @@ export function Reader({
     await setFam.mutateAsync({ word, familiarity: next });
   }
 
-  async function doAddCard(word: string, context: string) {
-    await addCard.mutateAsync({ word, context });
+  async function doAddCard(word: string, context: string, translation?: string) {
+    await addCard.mutateAsync({ word, context, translation });
     setAddedCards((m) => ({ ...m, [word]: true }));
     setFamMap((m) => ({ ...m, [word]: 'Learning' }));
   }
@@ -459,8 +512,40 @@ export function Reader({
     setEnded({ reviewableWords: res.reviewableWords });
   }
 
+  // After mouseup inside the article, detect a non-empty selection spanning
+  // multiple chars and show a small floating "Traduzir" toolbar near it. Single
+  // clicks (selection collapsed) fall through to onArticleClick below.
+  const onArticleMouseUp = useCallback(() => {
+    // Delay slightly so the browser finalizes the selection before we read it.
+    setTimeout(() => {
+      const sel = typeof window !== 'undefined' ? window.getSelection() : null;
+      const text = sel?.toString().trim() ?? '';
+      if (!sel || sel.rangeCount === 0 || text.length < 2 || !text.includes(' ')) {
+        setSelectionTool(null);
+        return;
+      }
+      const range = sel.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      if (rect.width === 0 && rect.height === 0) {
+        setSelectionTool(null);
+        return;
+      }
+      setSelectionTool({
+        text: text.slice(0, 2000),
+        x: rect.left + rect.width / 2,
+        y: rect.top,
+      });
+    }, 0);
+  }, []);
+
   const onArticleClick = useCallback(
     (e: React.MouseEvent) => {
+      // If the user just made a text selection, swallow the click so it doesn't
+      // trigger the word/sentence popovers — the floating toolbar handles it.
+      const sel = typeof window !== 'undefined' ? window.getSelection() : null;
+      if (sel && sel.toString().trim().length >= 2 && sel.toString().includes(' ')) {
+        return;
+      }
       const target = e.target as HTMLElement;
       const wordEl = target.closest('[data-token="word"]') as HTMLElement | null;
       if (wordEl) {
@@ -583,6 +668,7 @@ export function Reader({
             className="book-prose"
             onClick={onArticleClick}
             onMouseOver={onArticleMouseOver}
+            onMouseUp={onArticleMouseUp}
           >
             <BookBody paragraphs={paragraphs} famMap={famMap} karaokeIdx={karaokeIdx} bookId={bookId} />
           </article>
@@ -609,9 +695,32 @@ export function Reader({
         label={pageIdx < totalPages - 1 ? 'Next page' : 'Next chapter'}
       />
 
-      {/* Bottom bar: page indicator + dots + end session */}
+      {/* Bottom bar: progress + page indicator + end session */}
       <div className="border-t border-[color:var(--paper-border,#e6dcc6)] bg-[color:var(--paper,#f7efdf)]/90 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-6 py-3">
+        <div className="mx-auto flex max-w-3xl flex-col gap-2 px-6 py-3">
+          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.14em] text-[color:var(--ink-muted,#6b5f4a)] tabular-nums">
+            <span className="w-24 shrink-0">Cap. {Math.round(chapterPercent * 100)}%</span>
+            <span
+              aria-label="Chapter progress"
+              className="h-1 flex-1 overflow-hidden rounded-full bg-[color:var(--paper-border,#e6dcc6)]"
+            >
+              <span
+                className="block h-full bg-[color:var(--ink,#2a2218)] transition-[width] duration-200"
+                style={{ width: `${chapterPercent * 100}%` }}
+              />
+            </span>
+            <span className="w-24 shrink-0 text-right">Livro {Math.round(bookPercent * 100)}%</span>
+            <span
+              aria-label="Book progress"
+              className="h-1 flex-1 overflow-hidden rounded-full bg-[color:var(--paper-border,#e6dcc6)]"
+            >
+              <span
+                className="block h-full bg-[color:var(--ink,#2a2218)]/70 transition-[width] duration-200"
+                style={{ width: `${bookPercent * 100}%` }}
+              />
+            </span>
+          </div>
+        <div className="flex items-center justify-between gap-4">
           <span className="text-xs uppercase tracking-[0.16em] text-[color:var(--ink-muted,#6b5f4a)] tabular-nums">
             Page {safePageIdx + 1} / {totalPages}
           </span>
@@ -642,7 +751,31 @@ export function Reader({
             {t('reading.endSession')}
           </button>
         </div>
+        </div>
       </div>
+
+      {/* Floating toolbar for arbitrary text selection */}
+      {selectionTool && (
+        <div
+          className="fixed z-50 -translate-x-1/2 -translate-y-full rounded-full border border-border bg-surface px-1 py-1 shadow-lg"
+          style={{ left: selectionTool.x, top: selectionTool.y - 8 }}
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              const text = selectionTool.text;
+              setSelectionTool(null);
+              setPhraseSaved(null);
+              window.getSelection()?.removeAllRanges();
+              handleSentenceClick(text);
+            }}
+            className="rounded-full px-3 py-1 text-xs font-medium text-fg hover:bg-surface-muted"
+          >
+            {t('reading.translate') || 'Traduzir'}
+          </button>
+        </div>
+      )}
 
       {/* Word tooltip */}
       {popover?.kind === 'word' && (
@@ -653,9 +786,14 @@ export function Reader({
           entry={cacheRef.current.get(popover.word)}
           added={!!addedCards[popover.word]}
           onAdvance={() => advanceFamiliarity(popover.word)}
-          onAdd={() =>
-            doAddCard(popover.word, cacheRef.current.get(popover.word)?.example ?? popover.raw)
-          }
+          onAdd={() => {
+            const entry = cacheRef.current.get(popover.word);
+            doAddCard(
+              popover.word,
+              entry?.example ?? popover.raw,
+              entry?.translation,
+            );
+          }}
           onClose={() => setPopover(null)}
           closeLabel={t('common.close')}
           addLabel={t('reading.addFlashcard')}
@@ -694,14 +832,36 @@ export function Reader({
                 ? '…'
                 : explainCacheRef.current.get(popover.sentence)?.grammar ?? ''}
             </div>
-            <button
-              type="button"
-              onClick={() => setPopover(null)}
-              className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm transition hover:bg-surface-muted"
-            >
-              <X size={14} />
-              {t('common.close')}
-            </button>
+            <div className="mt-5 flex items-center gap-2">
+              <button
+                type="button"
+                disabled={
+                  phraseSaved === popover.sentence ||
+                  !explainCacheRef.current.get(popover.sentence)?.translation
+                }
+                onClick={async () => {
+                  const cached = explainCacheRef.current.get(popover.sentence);
+                  if (!cached?.translation) return;
+                  await addPhrase.mutateAsync({
+                    phrase: popover.sentence,
+                    translation: cached.translation,
+                  });
+                  setPhraseSaved(popover.sentence);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-fg transition hover:opacity-90 disabled:opacity-60"
+              >
+                {phraseSaved === popover.sentence ? <Check size={14} /> : <Plus size={14} />}
+                {t('reading.addFlashcard')}
+              </button>
+              <button
+                type="button"
+                onClick={() => setPopover(null)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm transition hover:bg-surface-muted"
+              >
+                <X size={14} />
+                {t('common.close')}
+              </button>
+            </div>
           </div>
         </div>
       )}

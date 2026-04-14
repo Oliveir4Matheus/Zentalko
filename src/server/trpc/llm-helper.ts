@@ -9,13 +9,15 @@ export async function getUserLlmRouter(userId: string) {
   });
   if (rows.length === 0) return null;
   const keys: Partial<Record<Provider, string>> = {};
+  const models: Partial<Record<Provider, string | null>> = {};
   const order: Provider[] = [];
   for (const r of rows) {
     const provider = r.provider as Provider;
     keys[provider] = decrypt(r.encryptedKey);
+    models[provider] = r.model ?? null;
     order.push(provider);
   }
-  return createLlmRouter({ order, keys });
+  return createLlmRouter({ order, keys, models });
 }
 
 export function tryParseJson<T>(text: string): T | null {

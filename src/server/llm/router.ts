@@ -26,11 +26,43 @@ export interface LlmCompletion {
 export interface RouterOptions {
   order: Provider[];
   keys: Partial<Record<Provider, string>>;
+  models?: Partial<Record<Provider, string | null>>;
 }
 
 const RETRIABLE_STATUS = new Set([401, 403, 429]);
 
-async function callProvider(p: Provider, prompt: string, key: string): Promise<Response> {
+export const DEFAULT_MODEL: Record<Provider, string> = {
+  claude: 'claude-sonnet-4',
+  openai: 'gpt-4o-mini',
+  openrouter: 'openai/gpt-oss-120b:free',
+  gemini: 'gemini-2.5-flash',
+};
+
+export const AVAILABLE_MODELS: Record<Provider, string[]> = {
+  claude: ['claude-sonnet-4', 'claude-opus-4', 'claude-3-5-sonnet-latest', 'claude-3-5-haiku-latest'],
+  openai: ['gpt-4o-mini', 'gpt-4o', 'gpt-4.1-mini', 'gpt-4.1'],
+  openrouter: [
+    'openai/gpt-oss-120b:free',
+    'google/gemini-2.0-flash-exp:free',
+    'meta-llama/llama-3.3-70b-instruct:free',
+    'deepseek/deepseek-chat:free',
+  ],
+  gemini: ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-1.5-pro', 'gemini-1.5-flash'],
+};
+
+function resolveModel(p: Provider, override?: string | null): string {
+  if (override && override.trim()) return override.trim();
+  if (p === 'openrouter' && process.env.OPENROUTER_MODEL) return process.env.OPENROUTER_MODEL;
+  return DEFAULT_MODEL[p];
+}
+
+async function callProvider(
+  p: Provider,
+  prompt: string,
+  key: string,
+  model?: string | null,
+): Promise<Response> {
+  const m = resolveModel(p, model);
   switch (p) {
     case 'claude':
       return fetch('https://api.anthropic.com/v1/messages', {
@@ -41,7 +73,7 @@ async function callProvider(p: Provider, prompt: string, key: string): Promise<R
           'anthropic-version': '2023-06-01',
         },
         body: JSON.stringify({
-          model: 'claude-sonnet-4',
+          model: m,
           max_tokens: 1024,
           messages: [{ role: 'user', content: prompt }],
         }),
@@ -51,7 +83,7 @@ async function callProvider(p: Provider, prompt: string, key: string): Promise<R
         method: 'POST',
         headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
         body: JSON.stringify({
-          model: 'gpt-4o-mini',
+          model: m,
           messages: [{ role: 'user', content: prompt }],
         }),
       });
@@ -65,14 +97,13 @@ async function callProvider(p: Provider, prompt: string, key: string): Promise<R
           'x-title': 'learnEnglish',
         },
         body: JSON.stringify({
-          // Default to a capable free model. Override via OPENROUTER_MODEL.
-          model: process.env.OPENROUTER_MODEL ?? 'openai/gpt-oss-120b:free',
+          model: m,
           messages: [{ role: 'user', content: prompt }],
         }),
       });
     case 'gemini':
       return fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${encodeURIComponent(key)}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent?key=${encodeURIComponent(key)}`,
         {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
@@ -109,7 +140,7 @@ export interface LlmRouter {
   complete(input: { prompt: string }): Promise<LlmCompletion>;
 }
 
-export function createLlmRouter({ order, keys }: RouterOptions): LlmRouter {
+export function createLlmRouter({ order, keys, models }: RouterOptions): LlmRouter {
   return {
     async complete({ prompt }) {
       const errors: unknown[] = [];
@@ -117,10 +148,11 @@ export function createLlmRouter({ order, keys }: RouterOptions): LlmRouter {
       for (const p of order) {
         const key = keys[p];
         if (!key) continue;
+        const model = models?.[p] ?? null;
 
         let resp: Response;
         try {
-          resp = await callProvider(p, prompt, key);
+          resp = await callProvider(p, prompt, key, model);
         } catch (err) {
           // Network-level failure → fall back.
           log.warn({ provider: p, reason: 'network' }, 'llm.fallback');

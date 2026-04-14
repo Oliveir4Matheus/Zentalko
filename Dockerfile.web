@@ -3,6 +3,7 @@
 
 FROM node:22-alpine AS deps
 WORKDIR /app
+RUN apk add --no-cache openssl libc6-compat
 COPY package.json package-lock.json* ./
 # Full install (incl. devDependencies) — required for `next build`, prisma,
 # typescript, tailwind, etc. `--include=dev` is mandatory: Coolify passes
@@ -30,7 +31,7 @@ ENV HOSTNAME=0.0.0.0
 
 RUN addgroup --system --gid 1001 nodejs \
  && adduser --system --uid 1001 nextjs \
- && apk add --no-cache wget
+ && apk add --no-cache wget openssl libc6-compat
 
 # Standalone output contains a minimal server with only the deps it needs.
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./

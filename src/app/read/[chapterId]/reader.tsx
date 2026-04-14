@@ -41,15 +41,25 @@ type TranslationCacheEntry = { translation: string; example: string; pending?: b
 
 type Token = { display: string; clean: string };
 type PreparedSentence = { raw: string; tokens: Token[] };
-type PreparedParagraph = { sentences: PreparedSentence[] };
+type PreparedParagraph =
+  | { kind: 'text'; sentences: PreparedSentence[] }
+  | { kind: 'image'; assetId: string };
+
+const IMG_MARKER = /^\[\[IMG:([A-Za-z0-9_-]+)\]\]$/;
 
 function prepareContent(text: string): PreparedParagraph[] {
-  return splitParagraphs(text).map((para) => ({
-    sentences: splitSentences(para).map((s) => ({
-      raw: s,
-      tokens: splitWords(s).map((w) => ({ display: w, clean: cleanWord(w) })),
-    })),
-  }));
+  return splitParagraphs(text).map((para) => {
+    const trimmed = para.trim();
+    const m = IMG_MARKER.exec(trimmed);
+    if (m) return { kind: 'image', assetId: m[1]! };
+    return {
+      kind: 'text',
+      sentences: splitSentences(para).map((s) => ({
+        raw: s,
+        tokens: splitWords(s).map((w) => ({ display: w, clean: cleanWord(w) })),
+      })),
+    };
+  });
 }
 
 /** Whole book body — memoized so popover/karaoke/end-state changes don't walk the 5k+ word tree. */
@@ -57,15 +67,31 @@ const BookBody = memo(function BookBody({
   paragraphs,
   famMap,
   karaokeIdx,
+  bookId,
 }: {
   paragraphs: PreparedParagraph[];
   famMap: Record<string, Familiarity>;
   karaokeIdx: number | null;
+  bookId: string;
 }) {
   let idx = 0;
   return (
     <>
-      {paragraphs.map((para, pi) => (
+      {paragraphs.map((para, pi) => {
+        if (para.kind === 'image') {
+          return (
+            <figure key={pi} data-page-block className="my-6 flex justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/api/books/${bookId}/assets/${para.assetId}`}
+                alt=""
+                className="max-h-[70vh] w-auto max-w-full rounded"
+                loading="lazy"
+              />
+            </figure>
+          );
+        }
+        return (
         <p key={pi} data-page-block>
           {para.sentences.map((s, si) => (
             <span
@@ -91,7 +117,8 @@ const BookBody = memo(function BookBody({
             </span>
           ))}
         </p>
-      ))}
+        );
+      })}
     </>
   );
 });
@@ -123,6 +150,7 @@ const MemoWord = memo(function WordSpan({
 
 export function Reader({
   chapterId,
+  bookId,
   title,
   bookTitle,
   author,
@@ -133,6 +161,7 @@ export function Reader({
   nextChapterId,
 }: {
   chapterId: string;
+  bookId: string;
   title: string;
   bookTitle: string;
   author: string | null;
@@ -237,7 +266,10 @@ export function Reader({
   // Flat word index map, used to render karaoke highlight without touching non-active words
   const flatTokens = useMemo(() => {
     const flat: { clean: string; display: string }[] = [];
-    paragraphs.forEach((p) => p.sentences.forEach((s) => s.tokens.forEach((t) => flat.push(t))));
+    paragraphs.forEach((p) => {
+      if (p.kind !== 'text') return;
+      p.sentences.forEach((s) => s.tokens.forEach((t) => flat.push(t)));
+    });
     return flat;
   }, [paragraphs]);
 
@@ -552,7 +584,7 @@ export function Reader({
             onClick={onArticleClick}
             onMouseOver={onArticleMouseOver}
           >
-            <BookBody paragraphs={paragraphs} famMap={famMap} karaokeIdx={karaokeIdx} />
+            <BookBody paragraphs={paragraphs} famMap={famMap} karaokeIdx={karaokeIdx} bookId={bookId} />
           </article>
         </div>
       </div>

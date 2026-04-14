@@ -14,6 +14,7 @@ export default function ReaderPerfPreview() {
   return (
     <Reader
       chapterId="demo"
+      bookId="demo"
       title="Performance Benchmark Chapter"
       bookTitle="Perf Harness"
       author="Synthetic Author"

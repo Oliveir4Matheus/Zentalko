@@ -52,26 +52,48 @@ export const readingRouter = router({
     .mutation(async ({ ctx, input }) => {
       consume(ctx.userId, LIMITS.upload);
       const parsed = await parseEpub(input.data);
-      const book = await ctx.prisma.book.create({
-        data: {
-          userId: ctx.userId,
-          title: parsed.title,
-          author: parsed.author,
-          language: parsed.language,
-          sourceFormat: 'EPUB',
-          filePath: input.filename,
-          chapters: {
-            create: parsed.chapters.map((c) => ({
-              index: c.index,
-              title: c.title,
-              content: c.content,
-              wordCount: c.wordCount,
-            })),
+      return ctx.prisma.$transaction(async (tx) => {
+        const book = await tx.book.create({
+          data: {
+            userId: ctx.userId,
+            title: parsed.title,
+            author: parsed.author,
+            language: parsed.language,
+            sourceFormat: 'EPUB',
+            filePath: input.filename,
           },
-        },
-        include: { chapters: true },
+        });
+        // Persist image assets and build a path → id map for content rewriting.
+        const pathToId = new Map<string, string>();
+        for (const asset of parsed.assets) {
+          const created = await tx.bookAsset.create({
+            data: { bookId: book.id, path: asset.path, mime: asset.mime, data: asset.data },
+            select: { id: true },
+          });
+          pathToId.set(asset.path, created.id);
+        }
+        // Rewrite [[IMG:<zipPath>]] markers to [[IMG:<assetId>]]. Unknown paths
+        // are dropped so the reader never tries to fetch a missing asset.
+        const rewriteContent = (content: string) =>
+          content.replace(/\[\[IMG:([^\]]+)\]\]/g, (_m, p: string) => {
+            const id = pathToId.get(p);
+            return id ? `[[IMG:${id}]]` : '';
+          });
+        const chapters = await Promise.all(
+          parsed.chapters.map((c) =>
+            tx.chapter.create({
+              data: {
+                bookId: book.id,
+                index: c.index,
+                title: c.title,
+                content: rewriteContent(c.content),
+                wordCount: c.wordCount,
+              },
+            }),
+          ),
+        );
+        return { ...book, chapters };
       });
-      return book;
     }),
 
   deleteBook: protectedProcedure

@@ -23,11 +23,18 @@ export interface ParsedChapter {
   wordCount: number;
 }
 
+export interface ParsedAsset {
+  path: string;
+  mime: string;
+  data: Buffer;
+}
+
 export interface ParsedBook {
   title: string;
   author: string;
   language: string;
   chapters: ParsedChapter[];
+  assets: ParsedAsset[];
 }
 
 const ZIP_MAGIC = [0x50, 0x4b, 0x03, 0x04];
@@ -161,6 +168,24 @@ export async function parseEpub(buffer: Buffer): Promise<ParsedBook> {
   const spineItems = asArray(pkg.spine?.itemref);
   const opfDir = dirnameOf(opfPath);
 
+  // Collect image assets from the manifest. Images are referenced by relative
+  // path from each chapter's XHTML, which we resolve to the ZIP-absolute path
+  // used here as the asset key.
+  const assets: ParsedAsset[] = [];
+  const assetPaths = new Set<string>();
+  for (const item of manifestItems) {
+    const href = item['@_href'];
+    const mediaType = (item['@_media-type'] ?? '') as string;
+    if (!href || !mediaType.startsWith('image/')) continue;
+    const assetPath = joinPath(`${opfDir}dummy`, href);
+    if (assetPaths.has(assetPath)) continue;
+    const f = zip.file(assetPath);
+    if (!f) continue;
+    const data = await f.async('nodebuffer');
+    assets.push({ path: assetPath, mime: mediaType, data });
+    assetPaths.add(assetPath);
+  }
+
   const chapters: ParsedChapter[] = [];
   let index = 0;
   for (const ref of spineItems) {
@@ -171,12 +196,13 @@ export async function parseEpub(buffer: Buffer): Promise<ParsedBook> {
     const chapterPath = joinPath(`${opfDir}dummy`, item.href);
     const file = zip.file(chapterPath);
     if (!file) continue;
-    const html = await file.async('string');
+    const rawHtml = await file.async('string');
+    const html = replaceImagesWithMarkers(rawHtml, chapterPath, assetPaths);
     const text = stripTags(html);
     if (!text) continue;
     chapters.push({
       index,
-      title: extractChapterTitle(html, `Chapter ${index + 1}`),
+      title: extractChapterTitle(rawHtml, `Chapter ${index + 1}`),
       content: text,
       wordCount: countWords(text),
     });
@@ -187,5 +213,35 @@ export async function parseEpub(buffer: Buffer): Promise<ParsedBook> {
     throw new InvalidEpubError('No readable chapters found in spine');
   }
 
-  return { title, author, language, chapters };
+  return { title, author, language, chapters, assets };
+}
+
+// Replace <img src="..."> with a plain-text marker that survives toPlainText().
+// The marker's payload is the resolved ZIP-absolute path — the import step later
+// rewrites it to a stable asset id.
+function replaceImagesWithMarkers(
+  html: string,
+  chapterPath: string,
+  assetPaths: Set<string>,
+): string {
+  return html.replace(/<img\b[^>]*>/gi, (tag) => {
+    const m = /\bsrc\s*=\s*("([^"]*)"|'([^']*)')/i.exec(tag);
+    const raw = m?.[2] ?? m?.[3];
+    if (!raw) return '';
+    let src: string;
+    try {
+      src = decodeURIComponent(raw.trim());
+    } catch {
+      src = raw.trim();
+    }
+    if (/^(data|https?|blob|javascript):/i.test(src)) return '';
+    let resolved: string;
+    try {
+      resolved = joinPath(chapterPath, src);
+    } catch {
+      return '';
+    }
+    if (!assetPaths.has(resolved)) return '';
+    return `\n\n[[IMG:${resolved}]]\n\n`;
+  });
 }

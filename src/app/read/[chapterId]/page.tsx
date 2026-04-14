@@ -16,6 +16,7 @@ export default async function ReadChapterPage({
     return (
       <Reader
         chapterId="demo"
+        bookId="demo"
         title="Demo Chapter"
         bookTitle="Demo"
         author={null}
@@ -42,6 +43,7 @@ export default async function ReadChapterPage({
   return (
     <Reader
       chapterId={chapter.id}
+      bookId={chapter.book.id}
       title={chapter.title}
       bookTitle={chapter.book.title}
       author={chapter.book.author}

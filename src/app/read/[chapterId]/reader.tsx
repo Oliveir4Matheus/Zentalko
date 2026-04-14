@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft, ChevronLeft, ChevronRight, Play, X, Plus, Check } from 'lucide-react';
 import { trpc } from '@/lib/trpc/client';
 import { useT } from '@/lib/i18n/context';
+import { TutorPanel } from './tutor-panel';
 
 type Familiarity = 'Unknown' | 'New' | 'Learning' | 'Known' | 'Ignored';
 
@@ -362,6 +363,9 @@ export function Reader({
     | null
   >(null);
   const [phraseSaved, setPhraseSaved] = useState<string | null>(null);
+  // Latest text selection, kept around after the toolbar disappears so the
+  // tutor panel can still quote it as context until the user clears it.
+  const [tutorSelection, setTutorSelection] = useState<string | null>(null);
   const sessionStarted = useRef(false);
 
   // Client-side translation cache + pending-promise dedupe
@@ -530,11 +534,13 @@ export function Reader({
         setSelectionTool(null);
         return;
       }
+      const captured = text.slice(0, 2000);
       setSelectionTool({
-        text: text.slice(0, 2000),
+        text: captured,
         x: rect.left + rect.width / 2,
         y: rect.top,
       });
+      setTutorSelection(captured);
     }, 0);
   }, []);
 
@@ -594,6 +600,29 @@ export function Reader({
     [fetchTranslation],
   );
 
+  // Extracts the plain text of the blocks currently inside the viewport window,
+  // so the tutor LLM gets relevant page context instead of the whole chapter.
+  const getPageText = useCallback((): string => {
+    const pages = pagesRef.current;
+    const pager = pagerRef.current;
+    if (!pages || !pager) return content.slice(0, 2500);
+    const offset = pageOffsets[safePageIdx] ?? 0;
+    const viewportH = pager.clientHeight || 800;
+    const pagesTop = pages.getBoundingClientRect().top;
+    const blocks = Array.from(pages.querySelectorAll<HTMLElement>('[data-page-block]'));
+    const parts: string[] = [];
+    for (const b of blocks) {
+      const r = b.getBoundingClientRect();
+      const top = r.top - pagesTop;
+      const bottom = top + r.height;
+      if (bottom > offset && top < offset + viewportH) {
+        parts.push((b.textContent ?? '').trim());
+      }
+    }
+    const joined = parts.filter(Boolean).join('\n\n');
+    return joined.length > 0 ? joined : content.slice(0, 2500);
+  }, [content, pageOffsets, safePageIdx]);
+
   const onArticleMouseOver = useCallback(
     (e: React.MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -634,6 +663,12 @@ export function Reader({
             >
               <Play size={14} />
             </button>
+            <TutorPanel
+              chapterId={chapterId}
+              getPageText={getPageText}
+              selection={tutorSelection}
+              onClearSelection={() => setTutorSelection(null)}
+            />
           </div>
         </div>
       </div>

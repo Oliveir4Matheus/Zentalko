@@ -1,0 +1,13 @@
+# Lean image that only runs `prisma migrate deploy`.
+# Avoids rebuilding the Next app just to apply SQL migrations.
+FROM node:22-alpine
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+COPY prisma ./prisma
+
+# Install just prisma + client (no dev deps, no Next, no Tailwind).
+RUN npm install --no-save prisma@5.22.0 @prisma/client@5.22.0 \
+ && npx prisma generate
+
+CMD ["npx", "prisma", "migrate", "deploy"]

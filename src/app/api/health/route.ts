@@ -55,13 +55,19 @@ async function checkTts(): Promise<Check> {
 
 export async function GET() {
   const [db, storage, tts] = await Promise.all([checkDb(), checkMinio(), checkTts()]);
-  const healthy = db.status === 'ok' && storage.status !== 'down' && tts.status !== 'down';
+  // DB is the only hard dependency. TTS down means no audio; storage down
+  // means no audio/epub blob persistence — both degrade UX but the app
+  // still serves reviews, reading (with MyMemory fallback), auth, etc.
+  const dbOk = db.status === 'ok';
+  const allOk = dbOk && storage.status !== 'down' && tts.status !== 'down';
   const body = {
-    status: healthy ? 'ok' : 'degraded',
+    status: allOk ? 'ok' : dbOk ? 'degraded' : 'down',
     uptime: process.uptime(),
     timestamp: new Date().toISOString(),
     checks: { db, storage, tts },
   };
-  if (!healthy) log.warn(body, 'health.degraded');
-  return NextResponse.json(body, { status: healthy ? 200 : 503 });
+  if (!allOk) log.warn(body, allOk ? 'health.ok' : 'health.degraded');
+  // Return 200 while DB is reachable so orchestrators (Coolify, Kubernetes)
+  // don't kill the container for non-critical degradation.
+  return NextResponse.json(body, { status: dbOk ? 200 : 503 });
 }

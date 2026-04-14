@@ -5,8 +5,11 @@ FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json* ./
 # Full install (incl. devDependencies) — required for `next build`, prisma,
-# typescript, tailwind, etc.
-RUN npm ci
+# typescript, tailwind, etc. `--include=dev` is mandatory: Coolify passes
+# NODE_ENV=production as build-arg, which would otherwise make npm skip
+# devDependencies and break the Next build (`Cannot find module 'tailwindcss'`).
+ENV NODE_ENV=development
+RUN npm ci --include=dev
 
 FROM node:22-alpine AS builder
 WORKDIR /app

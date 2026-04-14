@@ -8,8 +8,10 @@ export async function POST(req: Request) {
   const password = String(form.get('password') ?? '');
   try {
     const { sessionToken } = await signUpWithPassword({ email, password });
-    const url = new URL('/onboarding', req.url);
-    const res = NextResponse.redirect(url, { status: 303 });
+    const res = new NextResponse(null, {
+      status: 303,
+      headers: { Location: '/onboarding' },
+    });
     res.cookies.set(SESSION_COOKIE, sessionToken, {
       httpOnly: true,
       sameSite: 'lax',
@@ -19,8 +21,7 @@ export async function POST(req: Request) {
     });
     return res;
   } catch (err) {
-    const url = new URL('/signup', req.url);
-    url.searchParams.set('error', (err as Error).message);
-    return NextResponse.redirect(url, { status: 303 });
+    const location = `/signup?error=${encodeURIComponent((err as Error).message)}`;
+    return new NextResponse(null, { status: 303, headers: { Location: location } });
   }
 }

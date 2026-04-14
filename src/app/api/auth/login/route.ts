@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const { user, sessionToken } = await signInWithPassword({ email, password });
     const target = user.onboardingCompleted ? '/dashboard' : '/onboarding';
-    const res = NextResponse.redirect(new URL(target, req.url), { status: 303 });
+    const res = new NextResponse(null, { status: 303, headers: { Location: target } });
     res.cookies.set(SESSION_COOKIE, sessionToken, {
       httpOnly: true,
       sameSite: 'lax',
@@ -19,6 +19,6 @@ export async function POST(req: Request) {
     });
     return res;
   } catch {
-    return NextResponse.redirect(new URL('/login?error=1', req.url), { status: 303 });
+    return new NextResponse(null, { status: 303, headers: { Location: '/login?error=1' } });
   }
 }

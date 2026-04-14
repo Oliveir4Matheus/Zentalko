@@ -21,5 +21,5 @@ export async function POST(req: Request) {
   const caller = appRouter.createCaller(buildContext({ userId: user.id, locale: 'pt-BR' }));
   await caller.reading.addWordAsFlashcard({ word, context });
 
-  return NextResponse.redirect(new URL(safeRedirect, req.url), { status: 303 });
+  return new NextResponse(null, { status: 303, headers: { Location: safeRedirect } });
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { MessageCircle, Send, X } from 'lucide-react';
 import { trpc } from '@/lib/trpc/client';
 
@@ -29,6 +30,8 @@ export function TutorPanel({
   onOpenChange: (open: boolean) => void;
 }) {
   const setOpen = onOpenChange;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -67,18 +70,7 @@ export function TutorPanel({
     }
   }
 
-  return (
-    <>
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        aria-label="Abrir tutor"
-        className="rounded-full border border-[color:var(--paper-border,#e6dcc6)] bg-white/60 p-2 text-[color:var(--ink,#2a2218)] transition hover:bg-white"
-      >
-        <MessageCircle size={14} />
-      </button>
-
-      {open && (
+  const aside = open ? (
         <aside
           className="fixed right-0 top-0 z-40 flex h-full w-full max-w-[380px] flex-col border-l border-border bg-surface shadow-xl sm:w-[380px]"
           role="complementary"
@@ -189,7 +181,19 @@ export function TutorPanel({
             </form>
           </div>
         </aside>
-      )}
+  ) : null;
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        aria-label="Abrir tutor"
+        className="rounded-full border border-[color:var(--paper-border,#e6dcc6)] bg-white/60 p-2 text-[color:var(--ink,#2a2218)] transition hover:bg-white"
+      >
+        <MessageCircle size={14} />
+      </button>
+      {mounted && aside ? createPortal(aside, document.body) : null}
     </>
   );
 }

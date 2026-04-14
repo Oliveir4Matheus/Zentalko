@@ -38,11 +38,9 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-learnenglish}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-learnenglish}
       POSTGRES_DB: ${POSTGRES_DB:-learnenglish}
-    # Bind to loopback only — dev can reach via localhost:5433 without
-    # exposing the DB to the network. In Coolify prod, containers talk
-    # over the internal docker network regardless.
-    ports:
-      - "127.0.0.1:5433:5432"
+    # No host port mapping — containers talk over the internal docker
+    # network (service name `db`). For local dev access on 5433, see
+    # docker-compose.override.yml.
     volumes:
       - db-data:/var/lib/postgresql/data
     healthcheck:
@@ -61,11 +59,9 @@ services:
       MINIO_ROOT_PASSWORD: ${STORAGE_SECRET_KEY}
     volumes:
       - storage-data:/data
-    # Expose for Coolify reverse-proxy to route a public subdomain here, so
-    # browsers can fetch presigned URLs. Point STORAGE_PUBLIC_URL at it.
-    ports:
-      - "9000:9000"
-      - "9001:9001"
+    # In Coolify, route a public subdomain to this service (port 9000) via
+    # the UI instead of mapping host ports — avoids conflicts with other
+    # stacks. Point STORAGE_PUBLIC_URL at that subdomain.
     healthcheck:
       test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:9000/minio/health/live || exit 1"]
       interval: 15s

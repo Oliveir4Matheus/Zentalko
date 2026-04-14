@@ -1,0 +1,11 @@
+# Local-dev overrides. Docker Compose auto-merges this on `docker compose up`,
+# but Coolify invokes with `-f docker-compose.yml` explicitly and ignores it.
+services:
+  db:
+    ports:
+      - "127.0.0.1:5433:5432"
+
+  storage:
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"

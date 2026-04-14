@@ -19,8 +19,8 @@ services:
       STORAGE_PUBLIC_URL: ${STORAGE_PUBLIC_URL}
       TTS_URL: ${TTS_URL}
       LOG_LEVEL: ${LOG_LEVEL:-info}
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     depends_on:
       db:
         condition: service_healthy

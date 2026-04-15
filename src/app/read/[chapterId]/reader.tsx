@@ -388,7 +388,9 @@ export function Reader({
   const [, forceRender] = useState(0);
   const bump = useCallback(() => forceRender((n) => n + 1), []);
 
-  const explainCacheRef = useRef<Map<string, { translation: string; grammar: string }>>(new Map());
+  const explainCacheRef = useRef<
+    Map<string, { translation: string; grammar: string; error?: string }>
+  >(new Map());
 
   useEffect(() => {
     if (isDemo || sessionStarted.current) return;
@@ -476,16 +478,46 @@ export function Reader({
   async function handleSentenceClick(s: string) {
     setPopover({ kind: 'sentence', sentence: s });
     const cached = explainCacheRef.current.get(s);
-    if (cached) return;
+    if (cached && !cached.error) return;
+    // Clear prior error so the modal shows the loading state again on retry.
+    if (cached?.error) explainCacheRef.current.delete(s);
     try {
       const res = await explain.mutateAsync({ sentence: s });
+      const translation = (res.translation ?? '').trim();
+      // If the backend returned the source sentence unchanged (LLM + MyMemory
+      // both down, so it falls back to input), treat it as a failure so the
+      // UI surfaces a proper message instead of repeating the English text.
+      if (!translation || translation === s.trim()) {
+        explainCacheRef.current.set(s, {
+          translation: '',
+          grammar: '',
+          error: 'Tradução indisponível. Verifique sua chave de API ou tente novamente.',
+        });
+      } else {
+        explainCacheRef.current.set(s, {
+          translation,
+          grammar: String(res.grammar ?? 'N/A'),
+        });
+      }
+      bump();
+    } catch (err) {
+      const msg = String((err as Error).message ?? err);
+      const friendly =
+        /AllProvidersFailed/i.test(msg)
+          ? 'Todos os provedores de LLM falharam. Verifique sua chave ou tente novamente em alguns minutos.'
+          : /401|403|authentication/i.test(msg)
+            ? 'Chave de API inválida.'
+            : /429|rate/i.test(msg)
+              ? 'Limite de requisições atingido. Aguarde alguns segundos.'
+              : /too_big|max|2000/i.test(msg)
+                ? 'Trecho muito longo. Selecione um pedaço menor.'
+                : `Falha ao traduzir: ${msg.slice(0, 120)}`;
       explainCacheRef.current.set(s, {
-        translation: res.translation,
-        grammar: String(res.grammar ?? 'N/A'),
+        translation: '',
+        grammar: '',
+        error: friendly,
       });
       bump();
-    } catch {
-      // ignore
     }
   }
 
@@ -874,20 +906,39 @@ export function Reader({
             <div className="mb-1 text-xs uppercase tracking-[0.14em] text-fg-muted">
               {t('reading.translation')}
             </div>
-            <div data-testid="sentence-translation" className="mb-4 text-fg">
-              {explain.isPending && !explainCacheRef.current.get(popover.sentence)
-                ? '…'
-                : explainCacheRef.current.get(popover.sentence)?.translation ?? ''}
-            </div>
-            <div className="mb-1 text-xs uppercase tracking-[0.14em] text-fg-muted">
-              {t('reading.grammar')}
-            </div>
-            <div data-testid="sentence-grammar" className="text-fg">
-              {explain.isPending && !explainCacheRef.current.get(popover.sentence)
-                ? '…'
-                : explainCacheRef.current.get(popover.sentence)?.grammar ?? ''}
-            </div>
+            {(() => {
+              const cached = explainCacheRef.current.get(popover.sentence);
+              const pending = explain.isPending && !cached;
+              return (
+                <>
+                  <div data-testid="sentence-translation" className="mb-4 text-fg">
+                    {pending ? (
+                      '…'
+                    ) : cached?.error ? (
+                      <span className="text-red-700 dark:text-red-300">{cached.error}</span>
+                    ) : (
+                      cached?.translation ?? ''
+                    )}
+                  </div>
+                  <div className="mb-1 text-xs uppercase tracking-[0.14em] text-fg-muted">
+                    {t('reading.grammar')}
+                  </div>
+                  <div data-testid="sentence-grammar" className="text-fg">
+                    {pending ? '…' : cached?.error ? '—' : cached?.grammar ?? ''}
+                  </div>
+                </>
+              );
+            })()}
             <div className="mt-5 flex items-center gap-2">
+              {explainCacheRef.current.get(popover.sentence)?.error && (
+                <button
+                  type="button"
+                  onClick={() => handleSentenceClick(popover.sentence)}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm transition hover:bg-surface-muted"
+                >
+                  Tentar novamente
+                </button>
+              )}
               <button
                 type="button"
                 disabled={

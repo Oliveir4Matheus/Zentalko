@@ -406,6 +406,14 @@ export const readingRouter = router({
       return { ok: true };
     }),
 
+  listFamiliarities: protectedProcedure.query(async ({ ctx }) => {
+    const rows = await ctx.prisma.readingWord.findMany({
+      where: { userId: ctx.userId },
+      select: { word: true, level: true },
+    });
+    return rows;
+  }),
+
   getWordFamiliarity: protectedProcedure
     .input(z.object({ word: z.string().min(1).max(100) }))
     .mutation(async ({ ctx, input }) => {

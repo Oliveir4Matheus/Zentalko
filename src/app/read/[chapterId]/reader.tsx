@@ -335,6 +335,23 @@ export function Reader({
   }, [totalPages, nextChapterId, prevChapterId, router]);
 
   const [famMap, setFamMap] = useState<Record<string, Familiarity>>({});
+  const isDemoEarly = chapterId === 'demo';
+  // Preload the user's saved familiarities so colors persist across page /
+  // chapter navigation. Local changes (click-to-advance, add-to-flashcard)
+  // take precedence over whatever the server returned.
+  const famQuery = trpc.reading.listFamiliarities.useQuery(undefined, {
+    enabled: !isDemoEarly,
+    staleTime: 60_000,
+  });
+  useEffect(() => {
+    if (!famQuery.data) return;
+    setFamMap((local) => {
+      const merged: Record<string, Familiarity> = {};
+      for (const r of famQuery.data) merged[r.word] = r.level as Familiarity;
+      // Local state (user just clicked) wins over server snapshot.
+      return { ...merged, ...local };
+    });
+  }, [famQuery.data]);
   const [addedCards, setAddedCards] = useState<Record<string, boolean>>({});
   const [ended, setEnded] = useState<{ reviewableWords: string[] } | null>(null);
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -953,6 +970,26 @@ export function Reader({
                     translation: cached.translation,
                   });
                   setPhraseSaved(popover.sentence);
+                  // Mark every meaningful word in the saved phrase as
+                  // Learning so the colored highlight shows up immediately.
+                  const words = Array.from(
+                    new Set(
+                      popover.sentence
+                        .split(/\s+/)
+                        .map(cleanWord)
+                        .filter((w) => w && w.length > 1),
+                    ),
+                  );
+                  setFamMap((m) => {
+                    const next = { ...m };
+                    for (const w of words) next[w] = 'Learning';
+                    return next;
+                  });
+                  await Promise.all(
+                    words.map((w) =>
+                      setFam.mutateAsync({ word: w, familiarity: 'Learning' }).catch(() => undefined),
+                    ),
+                  );
                 }}
                 className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-fg transition hover:opacity-90 disabled:opacity-60"
               >
